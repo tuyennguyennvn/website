@@ -1,175 +1,348 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Đang triển khai – Nguyen Ngoc Tuyen</title>
-<meta name="description" content="Trang web đang được triển khai. Chủ sở hữu: Nguyen Ngoc Tuyen.">
+<title>NGUYEN NGOC TUYEN</title>
+<!-- Fallback: if JavaScript is disabled, the page still redirects after 30 seconds -->
+<noscript><meta http-equiv="refresh" content="30;url=https://www.facebook.com/tuyen.nguyen.fb.vn"></noscript>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+
 <style>
   :root {
-    --paper: #e8edf3;
-    --ink: #101b33;
-    --muted: #55617a;
-    --line: #c3ccda;
-    --signal: #2b49f0;
-    --done: #101b33;
-    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-    --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+    --bg1: #0e2e39;
+    --bg2: #0a1d27;
+    --bg3: #07141b;
+    --white: #ffffff;
+    --aqua: #8ff3ee;
+    --teal: #3fd6c6;
+    --cyan: #14a6c4;
+    --body: #c9dde3;
+    --glass: rgba(143, 243, 238, 0.06);
+    --line: rgba(143, 243, 238, 0.22);
+    color-scheme: dark;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper: #0e1424;
-      --ink: #e6ebf5;
-      --muted: #93a0bb;
-      --line: #28324d;
-      --signal: #6f86ff;
-      --done: #e6ebf5;
-    }
-  }
-  * { box-sizing: border-box; margin: 0; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
+
   body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--body);
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-  }
-  main {
-    flex: 1;
-    width: min(100% - 3rem, 62rem);
-    margin-inline: auto;
-    padding-block: clamp(3rem, 9vh, 6rem) 2rem;
+    min-height: 100svh;
     display: grid;
-    align-content: center;
-    gap: clamp(2.5rem, 7vh, 4.5rem);
+    place-items: center;
+    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 55%, var(--bg3) 100%);
+    color: var(--body);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    overflow: hidden;
   }
-  .status {
+
+  /* ---------- Background: soft glow + floating wireframe cubes ---------- */
+  .glow {
+    position: fixed; z-index: 0; pointer-events: none;
+    width: 70vmax; height: 70vmax;
+    left: 50%; top: 42%;
+    margin: -35vmax 0 0 -35vmax;
+    background: radial-gradient(circle, rgba(20, 166, 196, 0.20), transparent 62%);
+  }
+
+  .cube {
+    position: fixed; z-index: 1; pointer-events: none;
+    animation: float 10s ease-in-out infinite alternate;
+  }
+  .cube.c1 { width: 150px; left: -34px;  top: -18px;  animation-delay: -2s; }
+  .cube.c2 { width: 230px; left: 33%;    top: -80px;  animation-delay: -5s; opacity: .7; }
+  .cube.c3 { width: 280px; right: -70px; top: -40px;  animation-delay: -7s; }
+  .cube.c4 { width: 120px; right: 7%;    bottom: -26px; animation-delay: -3s; }
+  .cube.c5 { width: 190px; left: 5%;     bottom: 6%;  animation-delay: -8s; opacity: .8; }
+
+  @keyframes float {
+    from { transform: translateY(-12px) rotate(-2deg); }
+    to   { transform: translateY(14px)  rotate(2deg); }
+  }
+
+  /* ---------- Content ---------- */
+  main {
+    position: relative; z-index: 2;
+    width: min(100%, 1100px);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  h1 {
+    font-weight: 800;
+    font-size: clamp(2.4rem, 10vw, 7rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+  h1 .line { display: block; white-space: nowrap; }
+
+  /* each letter jumps and changes size in a wave */
+  .ch {
+    display: inline-block;
+    transform-origin: 50% 85%;
+    color: var(--c, var(--white));
+    animation:
+      drop .8s cubic-bezier(.2,1.4,.4,1) calc(var(--i) * .06s) backwards,
+      jump 2.4s ease-in-out calc(1.6s + var(--i) * .09s) infinite;
+    will-change: transform;
+  }
+  .ch.sp { width: .28em; }
+
+  @keyframes drop {
+    from { opacity: 0; transform: translateY(-.9em) scale(.3); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes jump {
+    0%, 55%, 100% { transform: translateY(0) scale(1); }
+    22%           { transform: translateY(-.16em) scale(1.32); }
+    38%           { transform: translateY(0) scale(.94); }
+  }
+
+  .welcome {
+    max-width: 34rem;
+    margin: 26px auto 0;
+    font-size: clamp(1rem, 2.1vw, 1.15rem);
+    line-height: 1.65;
+    color: var(--body);
+    animation: fade 1s ease 1.2s both;
+  }
+
+  /* ---------- Email ---------- */
+  .email {
     display: inline-flex;
     align-items: center;
-    gap: .6rem;
+    gap: 10px;
+    margin-top: 22px;
+    padding: 10px 18px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--glass);
+    color: var(--aqua);
     font-weight: 500;
-    color: var(--muted);
+    font-size: 1rem;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: background .2s ease, transform .2s ease, border-color .2s ease;
+    animation: fade 1s ease 1.4s both;
   }
-  .dot {
-    width: .7rem; height: .7rem; border-radius: 50%;
-    background: var(--signal);
-    animation: pulse 1.8s ease-in-out infinite;
-  }
-  h1 {
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: clamp(2.8rem, 9.5vw, 7rem);
-    line-height: .98;
-    letter-spacing: -.035em;
-    max-width: 14ch;
-    margin-top: 1.2rem;
-  }
-  .lede {
-    max-width: 48ch;
-    color: var(--muted);
-    margin-top: 1.5rem;
-  }
+  .email svg { width: 20px; height: 20px; flex: none; }
+  .email:hover { background: rgba(143,243,238,0.14); border-color: var(--aqua); transform: translateY(-1px); }
+  .email:focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; }
 
-  /* Deployment pipeline */
-  .pipeline {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    position: relative;
-  }
-  .pipeline::before {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; top: .55rem;
-    height: 2px;
-    background: var(--line);
-  }
-  .pipeline::after {
-    content: "";
-    position: absolute;
-    left: 0; top: .55rem;
-    height: 2px;
-    width: 0;
-    background: var(--signal);
-    animation: fill 2.4s .3s cubic-bezier(.2,.7,.2,1) forwards;
-  }
-  .step { position: relative; padding-top: 2rem; padding-right: 1rem; }
-  .step::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 1.15rem; height: 1.15rem;
-    border-radius: 50%;
-    background: var(--paper);
-    border: 2px solid var(--line);
-  }
-  .step.done::before { background: var(--done); border-color: var(--done); }
-  .step.active::before { border-color: var(--signal); background: var(--signal); box-shadow: 0 0 0 5px color-mix(in srgb, var(--signal) 25%, transparent); }
-  .step b { display: block; font-family: var(--display); font-weight: 500; font-size: 1.15rem; line-height: 1.3; }
-  .step span { color: var(--muted); font-size: .95rem; }
-  .step.active b { color: var(--signal); }
-
-  footer {
-    width: min(100% - 3rem, 62rem);
-    margin-inline: auto;
-    padding-block: 1.5rem 2rem;
-    border-top: 1px solid var(--line);
+  /* ---------- Countdown card ---------- */
+  .redirect {
+    margin: 42px auto 0;
+    width: fit-content;
+    max-width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    gap: .5rem 2rem;
-    justify-content: space-between;
-    color: var(--muted);
-    font-size: .95rem;
+    align-items: center;
+    gap: 18px;
+    padding: 12px 14px;
+    background: var(--glass);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    animation: fade 1s ease 1.6s both;
   }
-  footer strong { color: var(--ink); font-weight: 500; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 
-  @keyframes pulse { 50% { opacity: .35; transform: scale(.8); } }
-  /* Thanh tiến độ dừng ở bước đang thực hiện (bước 3/4) */
-  @keyframes fill { to { width: 58%; } }
+  .ring { position: relative; width: 60px; height: 60px; flex: none; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring .track { fill: none; stroke: rgba(143,243,238,0.16); stroke-width: 4; }
+  .ring .bar   { fill: none; stroke: url(#grad); stroke-width: 4; stroke-linecap: round; }
+  .ring .num {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    font-weight: 800; font-size: 1.05rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--white);
+  }
 
+  .info strong { display: block; font-weight: 600; font-size: 1rem; color: var(--white); }
+  .info span   { display: block; margin-top: 2px; font-size: 0.875rem; color: var(--body); }
+
+  .actions { display: flex; gap: 8px; margin-left: 6px; }
+
+  .btn {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--white);
+    font: 500 0.9rem Inter, system-ui, sans-serif;
+    padding: 11px 18px;
+    border-radius: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover { background: rgba(143,243,238,0.12); transform: translateY(-1px); }
+  .btn.primary {
+    border-color: transparent;
+    background: linear-gradient(100deg, var(--aqua), var(--teal) 55%, var(--cyan));
+    color: #04222b;
+    font-weight: 600;
+    box-shadow: 0 8px 26px rgba(20, 166, 196, 0.35);
+  }
+  .btn.primary:hover { background: linear-gradient(100deg, var(--aqua), var(--teal) 45%, var(--cyan)); box-shadow: 0 12px 34px rgba(20, 166, 196, 0.5); }
+  .btn:focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; }
+
+  .redirect.stopped .ring { display: none; }
+
+  /* ---------- Mobile ---------- */
   @media (max-width: 640px) {
-    .pipeline { grid-template-columns: 1fr; gap: 1.5rem; padding-left: 2rem; }
-    .pipeline::before { left: .55rem; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
-    .pipeline::after { display: none; }
-    .step { padding: 0 0 0 .5rem; }
-    .step::before { left: -2rem; top: .25rem; }
+    .cube.c2, .cube.c5 { display: none; }
+    .redirect { flex-wrap: wrap; justify-content: center; border-radius: 26px; gap: 14px; padding: 18px; }
+    .info { flex: 1 1 60%; text-align: left; }
+    .actions { width: 100%; margin-left: 0; }
+    .actions .btn { flex: 1; }
   }
+
+  /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion: reduce) {
-    .dot { animation: none; }
-    .pipeline::after { animation: none; width: 58%; }
+    .cube, .ch, .welcome, .email, .redirect { animation: none !important; }
+    .btn { transition: none; }
   }
 </style>
 </head>
+
 <body>
-<main>
-  <header>
-    <p class="status"><span class="dot" aria-hidden="true"></span>Đang triển khai</p>
-    <h1>Trang web đang được xây dựng.</h1>
-    <p class="lede">Nội dung đang được hoàn thiện và kiểm tra trước khi phát hành. Bạn hãy quay lại sau ít ngày nữa nhé.</p>
-  </header>
+  <div class="glow" aria-hidden="true"></div>
 
-  <ol class="pipeline" aria-label="Tiến độ triển khai">
-    <li class="step done"><b>Thiết kế giao diện</b><span>Hoàn thành</span></li>
-    <li class="step done"><b>Viết nội dung</b><span>Hoàn thành</span></li>
-    <li class="step active"><b>Kiểm thử</b><span>Đang thực hiện</span></li>
-    <li class="step"><b>Phát hành</b><span>Sắp tới</span></li>
-  </ol>
-</main>
+  <!-- Wireframe cube used in the background -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="cube" viewBox="0 0 100 116">
+      <polygon points="50,0 100,29 50,58 0,29"   fill="#8ff3ee" fill-opacity=".10" stroke="#8ff3ee" stroke-opacity=".28" stroke-width="1"/>
+      <polygon points="0,29 50,58 50,116 0,87"   fill="#8ff3ee" fill-opacity=".04" stroke="#8ff3ee" stroke-opacity=".22" stroke-width="1"/>
+      <polygon points="100,29 100,87 50,116 50,58" fill="#14a6c4" fill-opacity=".07" stroke="#8ff3ee" stroke-opacity=".22" stroke-width="1"/>
+    </symbol>
+  </svg>
+  <svg class="cube c1" viewBox="0 0 100 116" aria-hidden="true"><use href="#cube"/></svg>
+  <svg class="cube c2" viewBox="0 0 100 116" aria-hidden="true"><use href="#cube"/></svg>
+  <svg class="cube c3" viewBox="0 0 100 116" aria-hidden="true"><use href="#cube"/></svg>
+  <svg class="cube c4" viewBox="0 0 100 116" aria-hidden="true"><use href="#cube"/></svg>
+  <svg class="cube c5" viewBox="0 0 100 116" aria-hidden="true"><use href="#cube"/></svg>
 
-<footer>
-  <span>Chủ sở hữu: <strong>Nguyen Ngoc Tuyen</strong></span>
-  <span>© <span id="year">2026</span> Nguyen Ngoc Tuyen. Bảo lưu mọi quyền.</span>
-</footer>
+  <main>
+    <h1 id="name" aria-label="NGUYEN NGOC TUYEN">
+      <span class="line" data-text="NGUYEN NGOC" aria-hidden="true"></span>
+      <span class="line" data-text="TUYEN" data-gradient="true" aria-hidden="true"></span>
+    </h1>
+
+    <p class="welcome">Welcome to my personal page. You will be taken to my Facebook profile in a moment.</p>
+
+    <a class="email" href="mailto:tuyen.nguyen@tuyen.dpdns.org">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="3"/>
+        <path d="M3.5 7l8.5 6 8.5-6"/>
+      </svg>
+      tuyen.nguyen@tuyen.dpdns.org
+    </a>
+
+    <section class="redirect" id="redirect" aria-label="Automatic redirect">
+      <div class="ring">
+        <svg viewBox="0 0 60 60" aria-hidden="true">
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#8ff3ee"/>
+              <stop offset="100%" stop-color="#14a6c4"/>
+            </linearGradient>
+          </defs>
+          <circle class="track" cx="30" cy="30" r="26"/>
+          <circle class="bar" id="bar" cx="30" cy="30" r="26"/>
+        </svg>
+        <div class="num" id="num">30</div>
+      </div>
+
+      <div class="info">
+        <strong id="title">Redirecting to Facebook</strong>
+        <span id="sub">Automatically in 30 seconds</span>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" id="go" href="https://www.facebook.com/tuyen.nguyen.fb.vn">Go now</a>
+        <button class="btn" id="stay" type="button">Stay here</button>
+      </div>
+    </section>
+  </main>
+
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+  // ====== Settings ======
+  var FACEBOOK_URL = "https://www.facebook.com/tuyen.nguyen.fb.vn";
+  var REDIRECT_SECONDS = 30;   // change this number to use a different delay
+
+  // ====== Name: split into letters so each one can jump ======
+  var stops = [[143, 243, 238], [63, 214, 198], [20, 166, 196]];   // aqua -> teal -> cyan
+  function gradientAt(t) {
+    var seg = t < 0.5 ? 0 : 1;
+    var k = (t - seg * 0.5) / 0.5;
+    var a = stops[seg], b = stops[seg + 1];
+    return "rgb(" + a.map(function (v, i) { return Math.round(v + (b[i] - v) * k); }).join(",") + ")";
+  }
+
+  var index = 0;
+  document.querySelectorAll("#name .line").forEach(function (line) {
+    var text = line.getAttribute("data-text");
+    var useGradient = line.getAttribute("data-gradient") === "true";
+    for (var n = 0; n < text.length; n++) {
+      var s = document.createElement("span");
+      s.className = "ch";
+      s.style.setProperty("--i", index++);
+      if (text[n] === " ") {
+        s.className += " sp";
+      } else {
+        s.textContent = text[n];
+        if (useGradient) s.style.setProperty("--c", gradientAt(n / (text.length - 1)));
+      }
+      line.appendChild(s);
+    }
+  });
+
+  // ====== Countdown and redirect ======
+  var bar = document.getElementById("bar");
+  var num = document.getElementById("num");
+  var sub = document.getElementById("sub");
+  var title = document.getElementById("title");
+  var box = document.getElementById("redirect");
+  var stay = document.getElementById("stay");
+
+  var R = 26;
+  var C = 2 * Math.PI * R;
+  bar.style.strokeDasharray = C;
+  bar.style.strokeDashoffset = 0;
+
+  var total = REDIRECT_SECONDS * 1000;
+  var endAt = Date.now() + total;
+  var timer = setInterval(tick, 100);
+  num.textContent = REDIRECT_SECONDS;
+  sub.textContent = "Automatically in " + REDIRECT_SECONDS + " seconds";
+
+  function tick() {
+    var left = Math.max(0, endAt - Date.now());   // real clock, stays accurate even if the tab is hidden
+    var seconds = Math.ceil(left / 1000);
+    bar.style.strokeDashoffset = C * (1 - left / total);
+    num.textContent = seconds;
+    sub.textContent = seconds + (seconds === 1 ? " second left" : " seconds left");
+    if (left <= 0) {
+      clearInterval(timer);
+      window.location.href = FACEBOOK_URL;
+    }
+  }
+
+  // "Stay here" stops the countdown; "Go now" still works
+  stay.addEventListener("click", function () {
+    clearInterval(timer);
+    box.classList.add("stopped");
+    title.textContent = "Redirect stopped";
+    sub.textContent = "Press Go now whenever you want to visit Facebook";
+    stay.style.display = "none";
+  });
 </script>
 </body>
 </html>
