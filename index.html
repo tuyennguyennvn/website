@@ -742,6 +742,42 @@ a,button,.chip,.dc,.mv{-webkit-tap-highlight-color:transparent}
  .swi{flex-wrap:wrap}.swx{flex-direction:row;width:100%}.swx .mini{flex:1;height:40px}
  aside .upd{order:5;flex:1 0 100%;margin:0;text-align:right}
 }
+
+/* ===== MOBILE LAYOUT FIX (signed-in UI) =====
+   Nguyên nhân gốc: quy tắc desktop `#app{grid-template-columns:clamp(232px,17vw,280px) minmax(0,1fr)}`
+   nằm SAU quy tắc mobile nên trên điện thoại vẫn bị chia 2 cột (sidebar chiếm ~232px, nội dung bị đẩy ra ngoài màn hình).
+   Ngoài ra <aside class="bkn"> (thẻ "Lưu ý quan trọng") bị dính style của sidebar. */
+#app aside.bkn{position:static;height:auto;overflow:visible;align-self:auto;display:flex;flex-direction:row;align-items:flex-start;gap:14px;padding:18px 20px;margin:0 0 28px;border:1px solid rgba(180,83,9,.25);border-radius:24px;background:linear-gradient(135deg,#fff8e6,#eaf6f4);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 8px 24px rgba(27,43,52,.07)}
+@media (max-width:760px){
+ html,body{overflow-x:hidden}
+ #app{display:block;width:100%;max-width:100%}
+ body.in #app>aside{position:relative;height:auto;overflow:visible;display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"brand lang lang" "me me out" "upd upd upd";align-items:center;gap:10px;padding:12px 16px 10px;background:rgba(255,255,255,.88);border:0;border-bottom:1px solid var(--line);backdrop-filter:none;-webkit-backdrop-filter:none}
+ body.in #app>aside .brand{grid-area:brand;margin:0;font-size:21px;order:0}
+ body.in #app>aside .out{grid-area:out;order:0;height:46px;padding:0 18px;margin:0!important;font-size:13.5px;color:var(--text);background:#fff}
+ body.in #app>aside .me{grid-area:me;order:0;width:100%;min-width:0;max-width:100%;height:46px;margin:0;background:#fff;overflow:hidden}
+ body.in #app>aside .me .rb{flex:none}
+ body.in #app>aside .lang{grid-area:lang;order:0;margin:0!important;align-self:center;justify-self:end;background:rgba(27,43,52,.06)}
+ body.in #app>aside .lang button{min-height:36px;padding:6px 12px;font-size:13px;color:var(--muted)}
+ body.in #app>aside .lang button[aria-pressed=true]{color:#07122a}
+ body.in #app>aside .upd{grid-area:upd;order:0;margin:0;text-align:left;font-size:12px;color:var(--muted)}
+ /* Bottom tab bar (light theme, icon + label) */
+ body.in #app .nav{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;flex-direction:row;gap:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding:0 4px env(safe-area-inset-bottom,0px);max-width:100%;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(27,43,52,.08)}
+ body.in #app .nav::-webkit-scrollbar{display:none}
+ body.in #app .nav button{flex:1 0 auto;min-width:64px;min-height:58px;margin:0;padding:7px 8px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;border-top:3px solid transparent;border-radius:0;color:var(--muted);font:600 11.5px/1.15 Inter,sans-serif;letter-spacing:0;text-transform:none;text-align:center;white-space:nowrap}
+ body.in #app .nav button[aria-current=page]{color:var(--accent);border-top-color:var(--accent);background:rgba(15,118,110,.07)}
+ body.in #app .nav button::before{content:"";width:22px;height:22px;background:currentColor;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+ .nav button[data-p=home]{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'><path d='M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z'/></svg>")}
+ .nav button[data-p=study]{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'><path d='M2 9l10-5 10 5-10 5z'/><path d='M6 11.5V16c3 2.5 9 2.5 12 0v-4.5'/></svg>")}
+ .nav button[data-p=docs]{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/><path d='M14 3v5h5M9 13h6M9 17h6'/></svg>")}
+ .nav button[data-p=soft]{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='7' height='7' rx='1.5'/><rect x='14' y='3' width='7' height='7' rx='1.5'/><rect x='3' y='14' width='7' height='7' rx='1.5'/><rect x='14' y='14' width='7' height='7' rx='1.5'/></svg>")}
+ .nav button[data-p=movies]{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='5' width='18' height='14' rx='2'/><path d='M10 9.5v5l4.5-2.5z'/></svg>")}
+ .nav button[data-p=data]{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-7 8-7s8 3 8 7'/></svg>")}
+ .nav button[data-p=admin]{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z'/></svg>")}
+ .ovg,.tdg,.h1g,.fg{grid-template-columns:minmax(0,1fr)}
+ .ovc,.tdb,.tdg>*,.ovg>*{min-width:0;max-width:100%}
+ .tdt,.tdl{grid-template-columns:minmax(0,1fr)}
+ body.in main{padding:16px 16px calc(84px + env(safe-area-inset-bottom,0px));max-width:100%}
+}
 </style>
 </head>
 <body>
@@ -1725,6 +1761,10 @@ a,button,.chip,.dc,.mv{-webkit-tap-highlight-color:transparent}
   if(p==="admin")admBind();
  }
 })();
+</script>
+<script>
+/* Mobile: giữ tab đang chọn luôn nằm trong vùng nhìn thấy của thanh điều hướng dưới */
+(function(){var n=document.getElementById('nav');if(!n)return;n.addEventListener('click',function(e){var b=e.target.closest('button');if(b&&b.scrollIntoView)try{b.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'})}catch(x){}})})();
 </script>
 </body>
 </html>
