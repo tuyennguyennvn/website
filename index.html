@@ -57,7 +57,7 @@ input.bad{border-color:var(--err)}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8ff7ee,#16a6c9)}
 .bar.run i{width:100%;transition:width 5s linear}
 
-.alt{display:block;width:100%;margin-top:14px;background:none;border:1px solid var(--line);color:var(--accent);border-radius:999px;height:46px;font:600 15px Inter,sans-serif;cursor:pointer;transition:background .2s}
+.alt{display:block;width:100%;margin-top:14px;background:none;border:1px solid var(--line);color:var(--accent);border-radius:999px;min-height:46px;padding:10px 16px;line-height:1.3;font:600 15px Inter,sans-serif;cursor:pointer;transition:background .2s}
 .alt:hover{background:rgba(127,245,234,.1)}
 .alt:focus-visible{outline:3px solid #fff;outline-offset:3px}
 #wl h3{margin:0 0 6px;font-size:22px}
@@ -95,9 +95,7 @@ h2{margin:0 0 6px;font-size:clamp(30px,5vw,46px);font-weight:900;letter-spacing:
 .empty{border:1px dashed var(--line);border-radius:22px;padding:34px;text-align:center;color:var(--muted)}
 .hamb{display:none}
 /* ===== HOME redesign ===== */
-body.hb{--hl:rgba(255,255,255,.10);--a2:#a78bfa;--a3:#38bdf8;background:radial-gradient(900px 620px at 6% -6%,rgba(99,102,241,.34),transparent 62%),radial-gradient(820px 560px at 100% 0%,rgba(20,184,166,.26),transparent 62%),radial-gradient(900px 700px at 68% 108%,rgba(168,85,247,.20),transparent 62%),linear-gradient(180deg,#080c20,#060914);background-attachment:fixed}
 body.hb main{max-width:1260px;width:100%}
-body.hb aside{background:linear-gradient(180deg,rgba(14,18,44,.55),rgba(7,10,26,.55));border-right-color:var(--hl)}
 .glass{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.085),rgba(255,255,255,.03));border:1px solid var(--hl);border-radius:26px;padding:22px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(2,6,23,.45),inset 0 1px 0 rgba(255,255,255,.07)}
 .hero{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:26px;padding:26px 30px;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:-40% auto auto -10%;width:420px;height:420px;background:radial-gradient(circle,rgba(99,102,241,.28),transparent 65%);pointer-events:none}
@@ -181,6 +179,62 @@ body.hb aside{background:linear-gradient(180deg,rgba(14,18,44,.55),rgba(7,10,26,
 .hb .seg button:focus-visible,.hb .pa button:focus-visible,.hb .tp:focus-visible,.hb .dy:focus-visible,.hb .ym:focus-visible,.hb .pb:focus-visible,.hb .cnav button:focus-visible,.hb .tdy:focus-visible,.hb .pa a:focus-visible{outline:3px solid #fff;outline-offset:2px}
 @media (max-width:1000px){.h1g,.fg{grid-template-columns:1fr}.rail{position:static}.clk{text-align:left}}
 @media (max-width:480px){.hero{padding:20px}.comp{flex-direction:column}.yg{grid-template-columns:repeat(2,1fr)}}
+.dy{padding:5px 0 3px;display:flex;flex-direction:column;align-items:center;gap:0;line-height:1.25}
+.dy small{font-size:9.5px;color:var(--muted);font-weight:500}.dy.td small{color:#06121c}
+.dy.mk::after{left:6px;top:5px;bottom:auto;margin:0}
+.dy.hl{color:#ffb3d9}.dy.td.hl{color:#06121c}
+.dy.hl::before{content:"";position:absolute;right:6px;top:5px;width:6px;height:6px;border-radius:50%;background:#ff7eb6}
+.hv2{padding:8px 12px;border-radius:12px;margin-bottom:6px;background:rgba(255,126,182,.12);border:1px solid rgba(255,126,182,.3);display:flex;flex-direction:column;gap:1px;font-size:14px}.hv2 span{font-size:12px;color:var(--muted)}
+.hv2.off{background:rgba(255,126,182,.2);border-color:rgba(255,126,182,.55)}
+.lunl{margin:0 0 8px;color:var(--muted);font-size:13px}
+.upg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.up{display:flex;align-items:center;gap:14px;padding:16px}
+.ud{width:54px;height:58px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid var(--hl);display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none}.ud b{font-size:22px;line-height:1}.ud span{font-size:11px;color:var(--muted);margin-top:3px}
+.up.off .ud{background:linear-gradient(135deg,rgba(255,126,182,.4),rgba(167,139,250,.35));border-color:rgba(255,126,182,.5)}
+.ui{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}.ui b{font-size:16px}.ui span{font-size:12px;color:var(--muted)}
+.up em{font:700 12px Inter,sans-serif;font-style:normal;padding:5px 11px;border-radius:99px;background:rgba(127,245,234,.14);color:var(--accent);white-space:nowrap}
+
+/* ===== Signed-in theme: Midnight Aurora + language switch ===== */
+body.in{--panel:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);--hl:rgba(255,255,255,.10);--a2:#a78bfa;--a3:#38bdf8;--muted:#a9b4d0;
+ background:radial-gradient(1000px 700px at 4% -8%,rgba(109,94,252,.40),transparent 60%),radial-gradient(900px 640px at 104% 2%,rgba(31,209,192,.28),transparent 60%),radial-gradient(900px 700px at 62% 112%,rgba(255,126,182,.16),transparent 62%),radial-gradient(700px 500px at 0% 100%,rgba(56,189,248,.12),transparent 60%),linear-gradient(180deg,#0a0e1c,#070a16);background-attachment:fixed}
+body.in::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+body.in .cube{color:rgba(167,139,250,.16)}
+body.in aside{background:linear-gradient(180deg,rgba(16,20,44,.62),rgba(8,11,26,.62));border-right-color:rgba(255,255,255,.09);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+body.in .tile,body.in .card,body.in .dc,body.in .drow{background:linear-gradient(160deg,rgba(255,255,255,.075),rgba(255,255,255,.03));border-color:rgba(255,255,255,.11)}
+body.in .mb{background:#0e1326;border-color:rgba(255,255,255,.12)}body.in .pi option{background:#0e1326}
+body.in .pi,body.in input[type=text]{background:rgba(8,11,26,.55)}
+.lang{display:inline-flex;padding:3px;border-radius:99px;border:1px solid var(--line);background:rgba(8,12,28,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lang button{background:none;border:0;color:var(--muted);font:600 13px Inter,sans-serif;padding:7px 14px;border-radius:99px;cursor:pointer;white-space:nowrap}
+.lang button:hover{color:#fff}.lang button[aria-pressed=true]{background:linear-gradient(90deg,#8ff7ee,#7c8cff);color:#07122a}
+.lang button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+#lgl{display:flex;width:max-content;max-width:100%;margin:0 auto 26px}
+aside .lang{margin-top:auto;align-self:flex-start}aside .out{margin-top:12px}
+@media (max-width:760px){aside .lang{margin-top:10px}}
+
+
+/* ===== Documents: files / folders / search ===== */
+.dtool{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:6px;max-width:900px}
+.dtool .field{flex:1;min-width:220px;max-width:380px;margin:0}
+.chip .cc{display:inline-block;min-width:20px;margin-left:4px;padding:1px 6px;border-radius:99px;font-size:12px;background:rgba(255,255,255,.12)}
+.chip[aria-pressed=true] .cc{background:rgba(5,32,41,.2)}
+.dsh{display:flex;align-items:center;gap:8px;margin:24px 0 10px;font:700 12px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dsh em{font-style:normal;padding:2px 9px;border-radius:99px;background:rgba(255,255,255,.08)}
+.dri{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;background:rgba(127,245,234,.1);color:var(--accent)}
+.dri.fo{background:rgba(255,209,102,.12);color:#ffd166}.dri svg{width:20px;height:20px}
+#dl{max-width:900px}.dform .seg button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+/* ===== Vietnamese title ===== */
+html[lang=vi] #ttl{font-size:clamp(44px,13vw,84px);line-height:1.08}
+html[lang=vi] #ttl .ln{white-space:nowrap}
+/* ===== responsive overflow fixes ===== */
+#app{grid-template-columns:260px minmax(0,1fr)}
+aside,main{min-width:0}
+.cal{grid-template-columns:repeat(7,minmax(0,1fr))}
+.dy{min-width:0;font-family:inherit}
+.yg{grid-template-columns:repeat(3,minmax(0,1fr))}
+.hero,.h1g>*,.upg>*,.ui,.am{min-width:0}
+@media (max-width:1000px){.h1g{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){#app{grid-template-columns:minmax(0,1fr)}.nav{max-width:100%}.hero h2{font-size:clamp(26px,8vw,34px)}.upg{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.yg{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding:28px 16px}}
 .dcg{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
 .dc{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:14px;color:var(--text);cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:10px;transition:transform .15s,border-color .15s,box-shadow .15s}
 .dc:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 26px rgba(0,0,0,.35)}
@@ -258,7 +312,8 @@ a.btn{height:50px;font-size:16px}
 <div class="cube c7"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M50 4 94 28V72L50 96 6 72V28Z M50 50V96 M50 50 6 28 M50 50 94 28"/></svg></div>
 <section id="login">
  <div class="box">
-  <h1 id="ttl" aria-label="Personal Vault"><div class="ln" data-c="w">Personal</div><div class="ln" data-c="g">Vault</div></h1>
+  <div class="lang" id="lgl" role="group" aria-label="Language"><button type="button" data-lang="vi" aria-pressed="false" aria-label="Tiếng Việt">Tiếng Việt</button><button type="button" data-lang="en" aria-pressed="false" aria-label="English">English</button></div>
+  <h1 id="ttl" data-nt aria-label="Personal Vault"><div class="ln" data-c="w">Personal</div><div class="ln" data-c="g">Vault</div></h1>
   <p class="sub">A private place for my documents. Sign in with your @tuyen.dpdns.org email.</p>
   <form class="card" id="lf" novalidate>
    <label for="em">Email</label>
@@ -303,6 +358,7 @@ a.btn{height:50px;font-size:16px}
    <button data-p="docs">Documents</button>
    <button data-p="soft">Softwares</button>
   </nav>
+  <div class="lang" id="lgs" role="group" aria-label="Language"><button type="button" data-lang="vi" aria-pressed="false" aria-label="Tiếng Việt">Tiếng Việt</button><button type="button" data-lang="en" aria-pressed="false" aria-label="English">English</button></div>
   <button class="out" id="lo">Sign out</button>
  </aside>
  <main id="mn"></main>
@@ -319,7 +375,9 @@ a.btn{height:50px;font-size:16px}
  var USERS={"tuyen.nguyen@tuyen.dpdns.org":"Tuyen Nguyen","tuyen@tuyen.dpdns.org":"Tuyen","nntuyenvn@tuyen.dpdns.org":"NN Tuyen VN"};
  var DEFAULT="tuyenn", cur=null;
  var $=function(i){return document.getElementById(i)};
- (function(){var n=0;document.querySelectorAll('#ttl .ln').forEach(function(l){var t=l.textContent,g=l.dataset.c==='g';l.textContent='';l.setAttribute('aria-hidden','true');t.split('').forEach(function(c,k){var s=document.createElement('i');s.className='ch';s.textContent=c;s.style.setProperty('--i',n++);var f=g?k/(t.length-1):0;s.style.color=g?'rgb('+Math.round(155-136*f)+','+Math.round(250-91*f)+','+Math.round(241-45*f)+')':'#fff';l.appendChild(s)})})})();
+ function buildTitle(){var h=$('ttl'),n=0,ls=LANG==='vi'?['Kho lưu trữ','cá nhân']:['Personal','Vault'];h.textContent='';h.setAttribute('aria-label',LANG==='vi'?'Kho lưu trữ cá nhân':'Personal Vault');
+  ls.forEach(function(t,li){var l=document.createElement('div'),g=li===1;l.className='ln';l.setAttribute('aria-hidden','true');
+   t.split('').forEach(function(c,k){var e=document.createElement('i');e.className='ch';e.textContent=c===' '?'\u00a0':c;e.style.setProperty('--i',n++);var f=g?k/(t.length-1):0;e.style.color=g?'rgb('+Math.round(155-136*f)+','+Math.round(250-91*f)+','+Math.round(241-45*f)+')':'#fff';l.appendChild(e)});h.appendChild(l)})}
  function sget(k){try{return localStorage.getItem(k)}catch(e){return null}}
  function sset(k,v){try{localStorage.setItem(k,v)}catch(e){}}
  async function hash(s){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("vault:"+s));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")}
@@ -357,10 +415,10 @@ a.btn{height:50px;font-size:16px}
 
  function enter(email){
   cur=email; $("login").classList.add("hide"); $("app").classList.remove("hide");
-  document.title="Personal Vault"; logAct("Signed in"); go("home");
+  document.body.classList.add("in"); logAct("Signed in"); go("home"); applyLang(LANG);
  }
  $("lo").onclick=function(){
-  cur=null;$("app").classList.add("hide");$("login").classList.remove("hide");
+  cur=null;document.body.classList.remove("in","hb");clearInterval(ck);$("app").classList.add("hide");$("login").classList.remove("hide");applyLang(LANG);
   $("lb").disabled=false;$("wt").classList.add("hide");$("br").classList.remove("run");$("pw").value="";
  };
  $("nav").addEventListener("click",function(e){var b=e.target.closest("button");if(b)go(b.dataset.p)});
@@ -376,7 +434,7 @@ a.btn{height:50px;font-size:16px}
  function hue(t){var h=0;for(var i=0;i<t.length;i++)h=(h*31+t.charCodeAt(i))%360;return h}
  function stars(n){var s='';for(var i=1;i<=5;i++)s+=i<=n?'★':'☆';return s}
  function okUrl(u){u=u.toLowerCase();return u.indexOf('http://')===0||u.indexOf('https://')===0}
- function opts(l,sel){return l.map(function(g){return '<option'+(g===sel?' selected':'')+'>'+g+'</option>'}).join('')}
+ function opts(l,sel){return l.map(function(g){return '<option value="'+g+'"'+(g===sel?' selected':'')+'>'+g+'</option>'}).join('')}
  function mvStats(){var a=mvLoad(),c=function(s){return a.filter(function(m){return m.st===s}).length};return [[c('want'),'Want to watch'],[c('watching'),'Watching'],[c('done'),'Watched']].map(function(x){return '<div class="tile"><h3 class="bn">'+x[0]+'</h3><p>'+x[1]+'</p></div>'}).join('')}
  function mvCards(){var all=mvLoad(),a=all.filter(function(m){return (flt.s==='all'||m.st===flt.s)&&(flt.g==='all'||m.g===flt.g)&&(!flt.q||m.t.toLowerCase().indexOf(flt.q)>-1)});
   if(!a.length)return '<div class="empty" style="grid-column:1/-1">'+(all.length?'No movies match your filters.':'Your library is empty.')+'</div>';
@@ -397,87 +455,124 @@ a.btn{height:50px;font-size:16px}
  function dcSave(a){sset('docs:'+cur,JSON.stringify(a))}
  function dcGet(id){return DC.filter(function(c){return c[0]===id})[0]}
  function dcHome(){var a=dcLoad();return '<h2>Documents</h2><p class="lead">Organise your files by type. For each file, save a link to where it is stored (Google Drive, OneDrive and so on).</p><div class="dcg">'+DC.map(function(c){var n=a.filter(function(x){return x.c===c[0]}).length;return '<button class="dc" data-c="'+c[0]+'"><span class="logo" style="background:'+c[2]+';color:'+c[3]+'">'+c[4]+'</span><span class="cn">'+c[1]+'</span><span class="st">'+(n===1?'1 item':n+' items')+'</span></button>'}).join('')+'</div>'}
- function dcView(){var c=dcGet(dcur),a=dcLoad().filter(function(x){return x.c===dcur}),h='<button class="back" id="dback" type="button">← All documents</button><div class="dhead"><span class="logo" style="background:'+c[2]+';color:'+c[3]+'">'+c[4]+'</span><div><h2>'+c[1]+'</h2><p class="lead" style="margin:0">'+c[7]+'</p></div></div>';
+ var dkind='file',dfil='all',dq='';
+ function dcIc(k){return k==='folder'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>'}
+ function dcAll(){return dcLoad().filter(function(x){return x.c===dcur})}
+ function dcRows(l){return l.map(function(x){return '<div class="drow"><span class="dri'+(x.k==='folder'?' fo':'')+'">'+dcIc(x.k)+'</span><a href="'+esc(x.u)+'" target="_blank" rel="noopener noreferrer">'+esc(x.t)+'</a><span class="dd">'+esc(x.d)+'</span><button class="dx" data-id="'+x.id+'" type="button">Delete</button></div>'}).join('')}
+ function dcSec(t,l){return '<h4 class="dsh"><span>'+t+'</span><em>'+l.length+'</em></h4>'+dcRows(l)}
+ function dcList(){var c=dcGet(dcur),all=dcAll();if(!all.length)return '<div class="empty">Nothing here yet. Add your first '+c[1]+' item above.</div>';
+  var q=dq.toLowerCase(),m=all.filter(function(x){return !q||x.t.toLowerCase().indexOf(q)>-1||(x.u||'').toLowerCase().indexOf(q)>-1}),
+   fo=m.filter(function(x){return x.k==='folder'}),fi=m.filter(function(x){return x.k!=='folder'}),h='';
+  if(dfil!=='file'&&fo.length)h+=dcSec('Folders',fo);if(dfil!=='folder'&&fi.length)h+=dcSec('Files',fi);
+  return h||'<div class="empty">No results found.</div>'}
+ function dcChips(){var all=dcAll(),n=function(k){return all.filter(function(x){return (x.k==='folder')===(k==='folder')}).length};
+  return [['all','All',all.length],['folder','Folders',n('folder')],['file','Files',n('file')]].map(function(c){return '<button type="button" class="chip" data-f="'+c[0]+'" aria-pressed="'+(dfil===c[0])+'">'+c[1]+' <b class="cc">'+c[2]+'</b></button>'}).join('')}
+ function dcView(){var c=dcGet(dcur),h='<button class="back" id="dback" type="button">← All documents</button><div class="dhead"><span class="logo" style="background:'+c[2]+';color:'+c[3]+'">'+c[4]+'</span><div><h2>'+c[1]+'</h2><p class="lead" style="margin:0">'+c[7]+'</p></div></div>';
   if(c[5])h+='<a class="ola" href="'+c[5]+'" target="_blank" rel="noopener noreferrer">'+c[6]+'</a>';
-  h+='<form class="card dform" id="dform" novalidate style="margin-top:18px"><div class="two"><div><label for="dt">Name</label><input id="dt" type="text" class="pi" placeholder="File name"></div><div><label for="du">Link</label><input id="du" type="text" class="pi" placeholder="https://drive.google.com/..."></div></div><div class="msg" id="dmsg" role="alert"></div><button class="btn" type="submit">Add to '+c[1]+'</button></form><div id="dl">';
-  h+=a.length?a.map(function(x){return '<div class="drow"><a href="'+esc(x.u)+'" target="_blank" rel="noopener noreferrer">'+esc(x.t)+'</a><span class="dd">'+esc(x.d)+'</span><button class="dx" data-id="'+x.id+'" type="button">Delete</button></div>'}).join(''):'<div class="empty">Nothing here yet. Add your first '+c[1]+' item above.</div>';
-  return h+'</div>'}
+  h+='<form class="card dform" id="dform" novalidate style="margin-top:18px"><label>Type</label><div class="seg" id="dkind" role="group" style="margin-bottom:16px"><button type="button" data-k="file" aria-pressed="'+(dkind==='file')+'">File</button><button type="button" data-k="folder" aria-pressed="'+(dkind==='folder')+'">Folder</button></div><div class="two"><div><label for="dt">Name</label><input id="dt" type="text" class="pi" placeholder="'+(dkind==='folder'?'Folder name':'File name')+'"></div><div><label for="du">Link</label><input id="du" type="text" class="pi" placeholder="https://drive.google.com/..."></div></div><div class="msg" id="dmsg" role="alert"></div><button class="btn" type="submit">Add to '+c[1]+'</button></form>';
+  h+='<div class="dtool"><div class="field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="dq" type="text" placeholder="Search files and folders" aria-label="Search files and folders" value="'+esc(dq)+'"></div><div class="chips" id="dchips">'+dcChips()+'</div></div><div id="dl">'+dcList()+'</div>';
+  return h}
+ function dcRefresh(){$('dl').innerHTML=dcList();$('dchips').innerHTML=dcChips()}
  function dcRender(){$('mn').innerHTML=dcur?dcView():dcHome();dcBind();window.scrollTo(0,0)}
- function dcBind(){var g=document.querySelector('.dcg');if(g)g.addEventListener('click',function(e){var b=e.target.closest('.dc');if(b){dcur=b.dataset.c;dcRender()}});
+ function dcBind(){var g=document.querySelector('.dcg');if(g)g.addEventListener('click',function(e){var b=e.target.closest('.dc');if(b){dcur=b.dataset.c;dfil='all';dq='';dkind='file';dcRender()}});
   var bk=$('dback');if(bk)bk.onclick=function(){dcur=null;dcRender()};
   var f=$('dform');if(!f)return;
+  $('dkind').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;dkind=b.dataset.k;[].forEach.call(this.children,function(x){x.setAttribute('aria-pressed',x===b)});$('dt').setAttribute('placeholder',dkind==='folder'?'Folder name':'File name')});
+  $('dq').addEventListener('input',function(){dq=this.value.trim();$('dl').innerHTML=dcList()});
+  $('dchips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;dfil=b.dataset.f;dcRefresh()});
   f.addEventListener('submit',function(e){e.preventDefault();var t=$('dt').value.trim(),u=$('du').value.trim(),m=$('dmsg');m.textContent='';
    if(!t){m.textContent='Please enter a name.';$('dt').focus();return}
    if(!okUrl(u)){m.textContent='The link must start with http:// or https://';$('du').focus();return}
-   var a=dcLoad();a.unshift({id:Date.now().toString(36),c:dcur,t:t,u:u,d:new Date().toLocaleDateString('en-GB')});dcSave(a);logAct('Added "'+t+'" to '+dcGet(dcur)[1]);dcRender()});
-  $('dl').addEventListener('click',function(e){var b=e.target.closest('.dx');if(!b)return;if(!b.dataset.arm){b.dataset.arm='1';b.textContent='Confirm?';return}dcSave(dcLoad().filter(function(x){return x.id!==b.dataset.id}));logAct('Deleted an item from '+dcGet(dcur)[1]);dcRender()})}
- var NAMES={home:'Home',movies:'Watch Movies',data:'Personal Data',docs:'Documents',soft:'Softwares'},ck=null,cy=0,cmn=0,SNAP='17 Nov 2026';
- var NEWS=[{c:'Economy',t:'Gold slips worldwide while SJC bars hold steady',d:'World gold fell by about $11 an ounce to roughly $3,856, while SJC gold bars in Vietnam stayed at 134.5–137.5 million VND per tael.',s:'Phụ Nữ Today',tm:'05:47',u:'https://phunutoday.vn/bang-gia-vang-9999-24k-18k-sjc-doji-pnj-hom-nay-17-11-2026-d510729.html'},{c:'Sport',t:'Vietnam national team set on beating Kyrgyzstan',d:'Today’s football briefing says the team are determined to win, and U17 coach Cristiano Roland has sprung a surprise.',s:'Thể Thao & Văn Hóa',tm:'06:20',u:'https://thethaovanhoa.vn/tin-nong-bong-da-viet-hom-nay-17-11-doi-tuyen-viet-nam-quyet-thang-kyrgyzstan-hlv-cristiano-roland-gay-bat-ngo-voi-u17-viet-nam-20261117055712949.htm'},{c:'Markets',t:'Coffee prices dip, pepper holds flat',d:'Coffee fell by 1,000 VND/kg across regions, with Đắk Lắk near 82,000 VND/kg, while pepper stayed unchanged after last week’s cut.',s:'Báo Quân đội nhân dân',tm:'17 Nov',u:'https://baomoi.com/ban-tin-nong-san-hom-nay-17-11-gia-ca-phe-giam-ho-tieu-on-dinh-c56528941.epi'}];
+   var a=dcLoad();a.unshift({id:Date.now().toString(36),c:dcur,t:t,u:u,k:dkind,d:new Date().toLocaleDateString('en-GB')});dcSave(a);logAct('Added "'+t+'" to '+dcGet(dcur)[1]);
+   $('dt').value='';$('du').value='';dcRefresh();$('dt').focus()});
+  $('dl').addEventListener('click',function(e){var b=e.target.closest('.dx');if(!b)return;if(!b.dataset.arm){b.dataset.arm='1';b.textContent='Confirm?';return}dcSave(dcLoad().filter(function(x){return x.id!==b.dataset.id}));logAct('Deleted an item from '+dcGet(dcur)[1]);dcRefresh()})}
+ var NAMES={home:'Home',movies:'Watch Movies',data:'Personal Data',docs:'Documents',soft:'Softwares'},ck=null,cy=0,cmn=0;
+
  function actL(){try{return JSON.parse(sget('act:'+cur)||'[]')}catch(e){return []}}
  function logAct(m){var a=actL();if(a[0]&&a[0].m===m&&Date.now()-a[0].t<60000)return;a.unshift({t:Date.now(),m:m});sset('act:'+cur,JSON.stringify(a.slice(0,30)))}
  function ago(t){var s=Math.floor((Date.now()-t)/1000);if(s<60)return 'Just now';var m=Math.floor(s/60);if(m<60)return m+' min ago';var h=Math.floor(m/60);if(h<24)return h+' h ago';return Math.floor(h/24)+' d ago'}
- var H={v:'month',y:0,m:0,sel:null,tab:'latest',topic:null};
- var MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+ var H={v:'month',y:0,m:0,sel:null};
+
+ var LANG=sget('lang')||((navigator.language||'').toLowerCase().indexOf('vi')===0?'vi':'en'),curP='home';
+ var L=function(e,v){return LANG==='vi'?v:e},LOC=function(){return LANG==='vi'?'vi-VN':'en-GB'};
+ var D={'Personal Vault':'Kho lưu trữ cá nhân','Personal Vault – Sign in':'Kho lưu trữ cá nhân – Đăng nhập','A private place for my documents. Sign in with your @tuyen.dpdns.org email.':'Nơi riêng tư để lưu trữ tài liệu của tôi. Hãy đăng nhập bằng email @tuyen.dpdns.org của bạn.','Password':'Mật khẩu','Enter your password':'Nhập mật khẩu của bạn','Show':'Hiện','Hide':'Ẩn','Show password':'Hiện mật khẩu','Hide password':'Ẩn mật khẩu','Sign in':'Đăng nhập','Verifying your account… signing you in shortly.':'Đang xác minh tài khoản… sẽ đăng nhập cho bạn ngay.','Not a member? Join the waiting list':'Chưa là thành viên? Tham gia danh sách chờ','Join the waiting list':'Tham gia danh sách chờ','Enter your personal email to request access to Personal Vault.':'Nhập email cá nhân của bạn để xin quyền truy cập Kho lưu trữ cá nhân.','Full name':'Họ và tên','Your full name':'Họ và tên của bạn','Your email':'Email của bạn','Submit':'Gửi','Your request will be answered within 48 hours. Please check your email, as the reply may be in your spam folder.':'Yêu cầu của bạn sẽ được phản hồi trong vòng 48 giờ. Vui lòng kiểm tra email, vì thư trả lời có thể nằm trong thư mục spam.','Send my request to Tuyen by email':'Gửi yêu cầu cho Tuyen qua email','Back to sign in':'Quay lại đăng nhập','Contact: Tuyen Nguyen':'Liên hệ: Tuyen Nguyen','Only @tuyen.dpdns.org email addresses are accepted.':'Chỉ chấp nhận địa chỉ email @tuyen.dpdns.org.','Incorrect email or password.':'Email hoặc mật khẩu không đúng.','Please enter your full name.':'Vui lòng nhập họ và tên của bạn.','Please enter a valid email address.':'Vui lòng nhập địa chỉ email hợp lệ.',
+ 'Home':'Trang chủ','Watch Movies':'Xem phim','Personal Data':'Dữ liệu cá nhân','Documents':'Tài liệu','Softwares':'Phần mềm','Sign out':'Đăng xuất','Main':'Chính','Close':'Đóng',
+ 'Your personal movie library. Select a poster to see details.':'Thư viện phim cá nhân của bạn. Chọn một poster để xem chi tiết.','Want to watch':'Muốn xem','Watching':'Đang xem','Watched':'Đã xem','Search your movies':'Tìm phim của bạn','Filter by genre':'Lọc theo thể loại','All genres':'Tất cả thể loại','All':'Tất cả','Action':'Hành động','Adventure':'Phiêu lưu','Animation':'Hoạt hình','Comedy':'Hài','Crime':'Tội phạm','Documentary':'Tài liệu','Drama':'Chính kịch','Fantasy':'Giả tưởng','Horror':'Kinh dị','Romance':'Lãng mạn','Sci-Fi':'Khoa học viễn tưởng','Thriller':'Giật gân','Other':'Khác','No movies match your filters.':'Không có phim nào khớp với bộ lọc.','Your library is empty.':'Thư viện của bạn đang trống.',
+ 'Organise your files by type. For each file, save a link to where it is stored (Google Drive, OneDrive and so on).':'Sắp xếp tệp theo loại. Với mỗi tệp, hãy lưu liên kết tới nơi lưu trữ (Google Drive, OneDrive, v.v.).','Images':'Hình ảnh','Videos and recordings':'Video và bản ghi','Spreadsheets and workbooks':'Bảng tính và sổ làm việc','Documents and letters':'Tài liệu và thư từ','Slides and presentations':'Slide và bài thuyết trình','Reports and dashboards':'Báo cáo và dashboard','PDF files and scans':'Tệp PDF và bản quét','Photos and pictures':'Ảnh và hình ảnh','Anything else':'Mọi thứ khác','Open Excel online':'Mở Excel trực tuyến','Open Word online':'Mở Word trực tuyến','Open PowerPoint online':'Mở PowerPoint trực tuyến','Open Power BI':'Mở Power BI','← All documents':'← Tất cả tài liệu','Name':'Tên','Link':'Liên kết','File name':'Tên tệp','Delete':'Xóa','File':'Tệp','Folder':'Thư mục','Files':'Tệp','Folders':'Thư mục','Type':'Loại','Folder name':'Tên thư mục','Search files and folders':'Tìm tệp và thư mục','No results found.':'Không tìm thấy kết quả.','Confirm?':'Xác nhận?','Please enter a name.':'Vui lòng nhập tên.','The link must start with http:// or https://':'Liên kết phải bắt đầu bằng http:// hoặc https://',
+ 'Tools and installers.':'Công cụ và bộ cài đặt.','No software listed yet.':'Chưa có phần mềm nào.','Your profile and account security.':'Hồ sơ và bảo mật tài khoản của bạn.','Profile':'Hồ sơ','Custom password set':'Đã đặt mật khẩu riêng','Default password':'Mật khẩu mặc định','Change password':'Đổi mật khẩu','Current password':'Mật khẩu hiện tại','New password':'Mật khẩu mới','Confirm new password':'Xác nhận mật khẩu mới','Update password':'Cập nhật mật khẩu','Current password is incorrect.':'Mật khẩu hiện tại không đúng.','New password must be at least 6 characters.':'Mật khẩu mới phải có ít nhất 6 ký tự.','New passwords do not match.':'Mật khẩu mới không khớp.','Choose a password different from the current one.':'Hãy chọn mật khẩu khác với mật khẩu hiện tại.','Password updated. Use it the next time you sign in.':'Đã cập nhật mật khẩu. Hãy dùng nó ở lần đăng nhập tới.'};
+ var PN={'Home':'Home','Watch Movies':'Watch Movies','Personal Data':'Personal Data','Documents':'Documents','Softwares':'Softwares'};
+ function tr(s){return LANG==='vi'&&D[s]!==undefined?D[s]:s}
+ function trPat(s){if(LANG!=='vi')return s;var m;
+  if(s.indexOf(' · ')>0)return s.split(' · ').map(tr).join(' · ');
+  if((m=s.match(/^Add to (.+)$/)))return 'Thêm vào '+tr(m[1]);
+  if((m=s.match(/^Nothing here yet\. Add your first (.+) item above\.$/)))return 'Chưa có gì ở đây. Hãy thêm mục '+tr(m[1])+' đầu tiên ở phía trên.';
+  if((m=s.match(/^(\d+) items?$/)))return m[1]+' mục';return s}
+ function trAct(s){if(LANG!=='vi')return s;var m;if(s==='Signed in')return 'Đã đăng nhập';if(s==='Changed password')return 'Đã đổi mật khẩu';
+  if((m=s.match(/^Opened (.+)$/)))return 'Đã mở '+tr(m[1]);if((m=s.match(/^Viewed movie: (.+)$/)))return 'Đã xem phim: '+m[1];
+  if((m=s.match(/^Added "(.+)" to (.+)$/)))return 'Đã thêm "'+m[1]+'" vào '+tr(m[2]);if((m=s.match(/^Deleted an item from (.+)$/)))return 'Đã xóa một mục khỏi '+tr(m[1]);return s}
+ function skip(n){var e=n.nodeType===1?n:n.parentNode;return !e||e.closest('[data-nt],script,style,textarea')}
+ function trNode(n){if(n.__t!==undefined&&n.data!==n.__t)n.__o=n.data;if(n.__o===undefined)n.__o=n.data;var s=n.__o,k=s.trim();if(!k)return;
+  var out=LANG==='vi'?(D[k]!==undefined?s.replace(k,D[k]):trPat(k)===k?s:s.replace(k,trPat(k))):s;if(n.data!==out)n.data=out;n.__t=n.data}
+ function trAttr(el){['placeholder','aria-label'].forEach(function(a){if(!el.hasAttribute(a))return;el.__oa=el.__oa||{};var v=el.getAttribute(a);if(el.__oa[a]===undefined||v!==el.__oa[a+'t'])el.__oa[a]=v;var out=tr(el.__oa[a]);if(v!==out)el.setAttribute(a,out);el.__oa[a+'t']=out})}
+ function walk(r){if(r.nodeType===3){if(!skip(r))trNode(r);return}if(r.nodeType!==1||skip(r))return;var w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT),n,l=[];while((n=w.nextNode()))l.push(n);l.forEach(function(x){if(!skip(x))trNode(x)});
+  if(!r.closest('[data-nt]')){trAttr(r);[].forEach.call(r.querySelectorAll('[placeholder],[aria-label]'),function(e){if(!skip(e))trAttr(e)})}}
+ var mo=new MutationObserver(function(ms){ms.forEach(function(m){if(m.type==='characterData'){if(!skip(m.target))trNode(m.target)}else if(m.type==='attributes'){if(!skip(m.target))trAttr(m.target)}else m.addedNodes.forEach(walk)})});
+ function applyLang(l){LANG=l;sset('lang',l);document.documentElement.lang=l;buildTitle();walk(document.body);
+  [].forEach.call(document.querySelectorAll('.lang button'),function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
+  document.title=cur?tr('Personal Vault'):tr('Personal Vault – Sign in');
+  if(cur&&curP==='home'&&$('calbox')){$('mn').innerHTML=homeHTML(true);homeInit()}}
+ document.addEventListener('click',function(e){var b=e.target.closest('.lang button');if(b)applyLang(b.dataset.lang)});
+ mo.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['placeholder','aria-label']});
+ applyLang(LANG);
  var pad=function(n){return String(n).padStart(2,'0')};
+ var LF=new Intl.DateTimeFormat('en-u-ca-chinese',{day:'numeric',month:'numeric'}),LC={};
+ var SOL={'1-1':['Tết Dương lịch',1,'New Year’s Day'],'14-2':['Lễ Tình nhân',0,'Valentine’s Day'],'8-3':['Quốc tế Phụ nữ',0,'International Women’s Day'],'30-4':['Giải phóng miền Nam',1,'Reunification Day'],'1-5':['Quốc tế Lao động',1,'International Labour Day'],'19-5':['Sinh nhật Bác Hồ',0,'Ho Chi Minh’s Birthday'],'1-6':['Quốc tế Thiếu nhi',0,'Children’s Day'],'27-7':['Ngày Thương binh Liệt sĩ',0,'War Invalids & Martyrs’ Day'],'2-9':['Quốc khánh',1,'National Day'],'3-9':['Nghỉ Quốc khánh',1,'National Day holiday'],'10-10':['Ngày Giải phóng Thủ đô',0,'Capital Liberation Day'],'20-10':['Phụ nữ Việt Nam',0,'Vietnamese Women’s Day'],'20-11':['Nhà giáo Việt Nam',0,'Vietnamese Teachers’ Day'],'22-12':['Quân đội nhân dân VN',0,'People’s Army Day'],'24-12':['Đêm Giáng sinh',0,'Christmas Eve'],'25-12':['Giáng sinh',0,'Christmas Day']};
+ var LUN={'1-1':['Mùng 1 Tết Nguyên Đán',1,'Lunar New Year (Day 1)'],'2-1':['Mùng 2 Tết',1,'Tết Day 2'],'3-1':['Mùng 3 Tết',1,'Tết Day 3'],'4-1':['Mùng 4 Tết',0,'Tết Day 4'],'15-1':['Tết Nguyên Tiêu',0,'Lantern Festival'],'3-3':['Tết Hàn Thực',0,'Cold Food Festival'],'10-3':['Giỗ Tổ Hùng Vương',1,'Hùng Kings Commemoration'],'15-4':['Lễ Phật Đản',0,'Buddha’s Birthday'],'5-5':['Tết Đoan Ngọ',0,'Dragon Boat Festival'],'15-7':['Lễ Vu Lan',0,'Vu Lan Festival'],'15-8':['Tết Trung Thu',0,'Mid-Autumn Festival'],'23-12':['Ông Công Ông Táo',0,'Kitchen Gods Day']};
+ function lunar(d){var k=d.getFullYear()*400+d.getMonth()*32+d.getDate();if(LC[k])return LC[k];var o={};LF.formatToParts(new Date(d.getFullYear(),d.getMonth(),d.getDate(),12)).forEach(function(p){o[p.type]=p.value});return LC[k]={d:+o.day,m:parseInt(o.month,10),leap:/bis/.test(o.month)}}
+ function hol(dt){var y=dt.getFullYear(),m=dt.getMonth(),d=dt.getDate(),r=[],s=SOL[d+'-'+(m+1)],LU=lunar(dt),nx=lunar(new Date(y,m,d+1));
+  var u=LUN[LU.d+'-'+LU.m];if(s)r.push({n:L(s[2],s[0]),o:s[1]});if(!LU.leap&&u)r.push({n:L(u[2],u[0]),o:u[1],l:1});if(nx.d===1&&nx.m===1&&!nx.leap)r.push({n:L('Lunar New Year’s Eve','Giao thừa'),o:1,l:1});return r}
+ function lt(dt){var q=lunar(dt);return q.d+'/'+q.m+(q.leap?L(' leap',' nhuận'):'')}
  function sj(k){try{return JSON.parse(sget(k+cur)||'null')}catch(e){return null}}
- function sv(k,v){sset(k+cur,JSON.stringify(v))}
  function hm(t){var z=new Date(t);return pad(z.getHours())+':'+pad(z.getMinutes())}
- function fullDT(t){var z=new Date(t);return z.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+' · '+z.toLocaleTimeString('en-GB')}
+ function fullDT(t){var z=new Date(t);return z.toLocaleDateString(LOC(),{weekday:'long',day:'numeric',month:'long',year:'numeric'})+' · '+z.toLocaleTimeString(LOC())}
+ function agoV(t){var s=Math.floor((Date.now()-t)/1000);if(s<60)return L('Just now','Vừa xong');var m=Math.floor(s/60);if(m<60)return L(m+' min ago',m+' phút trước');var h=Math.floor(m/60);if(h<24)return L(h+' h ago',h+' giờ trước');var dd=Math.floor(h/24);return L(dd+' d ago',dd+' ngày trước')}
  function sameD(t,y,m,d){var z=new Date(t);return z.getFullYear()===y&&z.getMonth()===m&&z.getDate()===d}
  function dayActs(dt){return actL().filter(function(x){return sameD(x.t,dt.getFullYear(),dt.getMonth(),dt.getDate())})}
- function glyph(m){return /^Signed/.test(m)?'●':/^Opened/.test(m)?'↗':/^Viewed/.test(m)?'▶':/^Added/.test(m)?'+':/^Deleted/.test(m)?'−':/^Changed/.test(m)?'🔑':/^Posted|^Saved/.test(m)?'✦':'•'}
- function dayLbl(t){var n=new Date(),z=new Date(t),d=Math.round((new Date(n.getFullYear(),n.getMonth(),n.getDate())-new Date(z.getFullYear(),z.getMonth(),z.getDate()))/864e5);return d===0?'Today':d===1?'Yesterday':z.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}
- function actHTML(){var a=actL();if(!a.length)return '<p class="none">No activity yet. Things you do in your vault will appear here.</p>';
-  var f=a[0],h='<div class="last"><div class="lb">Last completed</div><h4>'+esc(f.m)+'</h4><div class="ld">'+esc(fullDT(f.t))+'</div><span class="la">'+ago(f.t)+'</span></div><ul class="tl">',g='';
-  a.slice(1,8).forEach(function(x){var l=dayLbl(x.t);if(l!==g){g=l;h+='<li class="tg" style="display:block;padding:0">'+esc(l)+'</li>'}h+='<li><span class="ic">'+glyph(x.m)+'</span><span class="am">'+esc(x.m)+'</span><span class="at" title="'+esc(fullDT(x.t))+'">'+hm(x.t)+'</span></li>'});
+ function glyph(m){return /^Signed/.test(m)?'●':/^Opened/.test(m)?'↗':/^Viewed/.test(m)?'▶':/^Added/.test(m)?'+':/^Deleted/.test(m)?'−':/^Changed/.test(m)?'🔑':'•'}
+ function dayLbl(t){var n=new Date(),z=new Date(t),d=Math.round((new Date(n.getFullYear(),n.getMonth(),n.getDate())-new Date(z.getFullYear(),z.getMonth(),z.getDate()))/864e5);return d===0?L('Today','Hôm nay'):d===1?L('Yesterday','Hôm qua'):z.toLocaleDateString(LOC(),{day:'numeric',month:'long',year:'numeric'})}
+ function actHTML(){var a=actL();if(!a.length)return '<p class="none">'+L('No activity yet. Things you do in your vault will appear here.','Chưa có hoạt động nào. Những gì bạn làm trong vault sẽ hiện ở đây.')+'</p>';
+  var f=a[0],h='<div class="last"><div class="lb">'+L('Last completed','Vừa hoàn thành')+'</div><h4>'+esc(trAct(f.m))+'</h4><div class="ld">'+esc(fullDT(f.t))+'</div><span class="la">'+agoV(f.t)+'</span></div><ul class="tl">',g='';
+  a.slice(1,8).forEach(function(x){var l=dayLbl(x.t);if(l!==g){g=l;h+='<li class="tg" style="display:block;padding:0">'+esc(l)+'</li>'}h+='<li><span class="ic">'+glyph(x.m)+'</span><span class="am">'+esc(trAct(x.m))+'</span><span class="at" title="'+esc(fullDT(x.t))+'">'+hm(x.t)+'</span></li>'});
   return h+'</ul>'}
- function evList(l){return l.length?l.map(function(x){return '<div class="ev"><span>'+esc(x.m)+'</span><small>'+hm(x.t)+'</small></div>'}).join(''):'<p class="none" style="margin:0">Nothing recorded.</p>'}
+ function hBadges(l){return l.map(function(x){return '<div class="hv2'+(x.o?' off':'')+'"><b>'+esc(x.n)+'</b><span>'+(x.l?L('Lunar calendar','Âm lịch'):L('Solar calendar','Dương lịch'))+(x.o?L(' · Day off',' · Nghỉ lễ'):'')+'</span></div>'}).join('')}
+ function evList(l){return l.length?l.map(function(x){return '<div class="ev"><span>'+esc(trAct(x.m))+'</span><small>'+hm(x.t)+'</small></div>'}).join(''):'<p class="none" style="margin:0">'+L('Nothing recorded.','Không có hoạt động.')+'</p>'}
  function calHTML(){var t=new Date(),A=actL(),v=H.v,sel=H.sel,title,body='';
-  if(v==='year'){title=H.y;body='<div class="yg">'+MO.map(function(n,i){var c=A.filter(function(x){var z=new Date(x.t);return z.getFullYear()===H.y&&z.getMonth()===i}).length;return '<button type="button" class="ym'+(t.getFullYear()===H.y&&t.getMonth()===i?' cur':'')+'" data-hm="'+i+'"><b>'+n+'</b><span>'+(c?c+' activities':'—')+'</span></button>'}).join('')+'</div>'}
-  else if(v==='month'){var d=new Date(H.y,H.m,1),first=(d.getDay()+6)%7,n=new Date(H.y,H.m+1,0).getDate(),mk={};title=d.toLocaleDateString('en-GB',{month:'long',year:'numeric'});
+  if(v==='year'){title=L('Year ','Năm ')+H.y;body='<div class="yg">'+Array.apply(null,Array(12)).map(function(_,i){var c=A.filter(function(x){var z=new Date(x.t);return z.getFullYear()===H.y&&z.getMonth()===i}).length,hc=0,dm=new Date(H.y,i+1,0).getDate();for(var k=1;k<=dm;k++)hc+=hol(new Date(H.y,i,k)).length;return '<button type="button" class="ym'+(t.getFullYear()===H.y&&t.getMonth()===i?' cur':'')+'" data-hm="'+i+'"><b>'+(LANG==='vi'?'Tháng '+(i+1):new Date(2000,i,1).toLocaleDateString('en-GB',{month:'long'}))+'</b><span>'+L(hc+' holidays',hc+' ngày lễ')+'</span><span>'+(c?L(c+' activities',c+' hoạt động'):'—')+'</span></button>'}).join('')+'</div>'}
+  else if(v==='month'){var d=new Date(H.y,H.m,1),first=(d.getDay()+6)%7,n=new Date(H.y,H.m+1,0).getDate(),mk={};title=LANG==='vi'?'Tháng '+(H.m+1)+', '+H.y:d.toLocaleDateString('en-GB',{month:'long',year:'numeric'});
    A.forEach(function(x){var z=new Date(x.t);if(z.getFullYear()===H.y&&z.getMonth()===H.m)mk[z.getDate()]=1});
-   body='<div class="cal">'+['Mo','Tu','We','Th','Fr','Sa','Su'].map(function(w){return '<span class="wd">'+w+'</span>'}).join('');
+   body='<div class="cal">'+L(['Mo','Tu','We','Th','Fr','Sa','Su'],['T2','T3','T4','T5','T6','T7','CN']).map(function(w){return '<span class="wd">'+w+'</span>'}).join('');
    for(var i=0;i<first;i++)body+='<span></span>';
-   for(var k=1;k<=n;k++)body+='<button type="button" class="dy'+(sameD(t,H.y,H.m,k)?' td':'')+(sameD(sel,H.y,H.m,k)?' sel':'')+(mk[k]?' mk':'')+'" data-hd="'+k+'">'+k+'</button>';
-   body+='</div><div class="sd"><h5>'+esc(sel.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}))+'</h5>'+evList(dayActs(sel))+'</div>'}
-  else{title=sel.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});var da=dayActs(sel),today=sameD(t,sel.getFullYear(),sel.getMonth(),sel.getDate());
-   body='<div class="dsc" id="dsc">';for(var h=0;h<24;h++){var l=da.filter(function(x){return new Date(x.t).getHours()===h});body+='<div class="hr'+(today&&t.getHours()===h?' now':'')+'"><span class="hh">'+pad(h)+':00</span><div class="hv">'+(l.length?evList(l):'')+'</div></div>'}body+='</div>'}
-  return '<div class="ch2"><div class="seg" role="group" aria-label="Calendar view">'+['year','month','day'].map(function(x){return '<button type="button" data-cv="'+x+'" aria-pressed="'+(v===x)+'">'+x.charAt(0).toUpperCase()+x.slice(1)+'</button>'}).join('')+'</div><button type="button" class="tdy" data-today="1">Today</button></div><div class="cnav"><button type="button" data-cn="-1" aria-label="Previous">‹</button><h3>'+esc(title)+'</h3><button type="button" data-cn="1" aria-label="Next">›</button></div>'+body}
- function items(){var L=sj('lk:')||{},S=sj('sv:')||{},o=[];
-  (sj('pst:')||[]).forEach(function(p){var tg=p.x.match(/#[\p{L}\d_]+/gu)||[];o.push({id:p.id,k:'me',ts:p.t,o:0,c:tg[0]||'#note',tags:tg,a:USERS[cur].split(' ')[0],tx:p.x,L:L[p.id],S:S[p.id]})});
-  NEWS.forEach(function(n,i){var id='n'+i;o.push({id:id,k:'news',ts:0,o:i,c:n.c,tags:[n.c],a:n.s,tm:n.tm,t:n.t,tx:n.d,u:n.u,L:L[id],S:S[id]})});return o}
- function feedHTML(){var all=items(),l=all.filter(function(x){return !H.topic||x.tags.indexOf(H.topic)>-1});
-  l.sort(H.tab==='latest'?function(a,b){return (b.ts-a.ts)||(a.o-b.o)}:function(a,b){var s=function(x){return (x.L?3:0)+(x.S?2:0)};return (s(b)-s(a))||(a.o-b.o)||(b.ts-a.ts)});
-  return (l.length?l:[{k:'e'}]).map(function(x){if(x.k==='e')return '<div class="empty">No posts for this topic yet.</div>';var me=x.k==='me';
-   return '<article class="post glass"><div class="ph"><span class="av'+(me?' me':'')+'">'+esc(x.a.charAt(0))+'</span><div><b>'+esc(x.a)+'</b><span>'+(me?ago(x.ts)+' · You':esc(x.tm)+' · Vietnam')+'</span></div><span class="tag">'+esc(x.c)+'</span></div>'+(me?'':'<h4>'+esc(x.t)+'</h4>')+'<p>'+esc(x.tx).replace(/#([\p{L}\d_]+)/gu,'<span class="ht">#$1</span>')+'</p><div class="pa"><button type="button" data-lk="'+x.id+'" aria-pressed="'+!!x.L+'">'+(x.L?'♥ Liked':'♡ Like')+'</button><button type="button" data-sv="'+x.id+'" aria-pressed="'+!!x.S+'">'+(x.S?'Saved':'Save')+'</button><button type="button" data-sh="'+x.id+'">Share</button>'+(me?'<button type="button" data-dl="'+x.id+'">Delete</button>':'<a class="src" href="'+esc(x.u)+'" target="_blank" rel="noopener noreferrer">Read at source ↗</a>')+'</div></article>'}).join('')}
- function railHTML(){var all=items(),c={},S=sj('sv:')||{};all.forEach(function(x){x.tags.forEach(function(t){c[t]=(c[t]||0)+1})});
-  var tp=Object.keys(c).sort(function(a,b){return c[b]-c[a]}).slice(0,8);
-  return '<section class="glass"><h4>Trending topics</h4>'+tp.map(function(t,i){return '<button type="button" class="tp" data-tp="'+esc(t)+'" aria-pressed="'+(H.topic===t)+'"><i>'+(i+1)+'</i><b>'+esc(t)+'</b><span>'+c[t]+' post'+(c[t]>1?'s':'')+'</span></button>'}).join('')+(H.topic?'<button type="button" class="tdy" data-tp="" style="margin-top:10px">Clear filter</button>':'')+'</section><section class="glass"><h4>Your feed</h4><div class="stt"><div><b>'+all.length+'</b><span>Posts</span></div><div><b>'+Object.keys(S).length+'</b><span>Saved</span></div></div><p class="note">Topics are ranked by how many posts use them.</p></section>'}
- function homeHTML(){
-  return '<section class="hero glass"><div><p class="gt" id="gt"></p><h2>Welcome back, <span class="grad">'+esc(USERS[cur].split(' ')[0])+'</span></h2><p class="lead" style="margin:0">What you just did, and what is happening around you.</p></div><div class="clk"><div class="tm" id="tm"></div><div class="dt2" id="dd"></div></div></section>'+
-  '<div class="sec"><span class="eyebrow">01</span><h3>Your activity</h3><i></i></div><div class="h1g"><section class="glass" id="actbox">'+actHTML()+'</section><section class="glass" id="calbox">'+calHTML()+'</section></div>'+
-  '<div class="sec"><span class="eyebrow">02</span><h3>Community feed</h3><i></i><div class="seg" role="group" aria-label="Feed order"><button type="button" data-ft="latest" id="ftl" aria-pressed="true">Latest</button><button type="button" data-ft="trending" id="ftt" aria-pressed="false">Trending</button></div></div>'+
-  '<div class="fg"><div><section class="comp glass"><textarea id="pt" maxlength="280" placeholder="Share a note with your feed… use #tags" aria-label="New post"></textarea><button type="button" class="pb" id="pbtn">Post</button></section><div id="feedbox">'+feedHTML()+'</div><p class="note">Headlines are a saved snapshot ('+SNAP+'), not a live feed.</p></div><div class="rail" id="rail">'+railHTML()+'</div></div>'}
+   for(var k=1;k<=n;k++){var dd=new Date(H.y,H.m,k),q=lunar(dd),hh=hol(dd);body+='<button type="button" class="dy'+(sameD(t,H.y,H.m,k)?' td':'')+(sameD(sel,H.y,H.m,k)?' sel':'')+(mk[k]?' mk':'')+(hh.length?' hl':'')+'" data-hd="'+k+'" title="'+esc(hh.map(function(x){return x.n}).join(', '))+'">'+k+'<small>'+(q.d===1?q.d+'/'+q.m:q.d)+'</small></button>'}
+   body+='</div><div class="sd"><h5>'+esc(sel.toLocaleDateString(LOC(),{weekday:'long',day:'numeric',month:'long'}))+' · '+L('Lunar ','Âm lịch ')+lt(sel)+'</h5>'+hBadges(hol(sel))+evList(dayActs(sel))+'</div>'}
+  else{title=sel.toLocaleDateString(LOC(),{weekday:'long',day:'numeric',month:'long',year:'numeric'});var da=dayActs(sel),today=sameD(t,sel.getFullYear(),sel.getMonth(),sel.getDate());
+   body='<p class="lunl">'+L('Lunar calendar: ','Âm lịch: ')+lt(sel)+'</p>'+hBadges(hol(sel))+'<div class="dsc" id="dsc">';for(var h=0;h<24;h++){var l=da.filter(function(x){return new Date(x.t).getHours()===h});body+='<div class="hr'+(today&&t.getHours()===h?' now':'')+'"><span class="hh">'+pad(h)+':00</span><div class="hv">'+(l.length?evList(l):'')+'</div></div>'}body+='</div>'}
+  return '<div class="ch2"><div class="seg" role="group" aria-label="'+L('Calendar view','Chế độ xem lịch')+'">'+[['year',L('Year','Năm')],['month',L('Month','Tháng')],['day',L('Day','Ngày')]].map(function(x){return '<button type="button" data-cv="'+x[0]+'" aria-pressed="'+(v===x[0])+'">'+x[1]+'</button>'}).join('')+'</div><button type="button" class="tdy" data-today="1">'+L('Today','Hôm nay')+'</button></div><div class="cnav"><button type="button" data-cn="-1" aria-label="'+L('Previous','Trước')+'">‹</button><h3>'+esc(title)+'</h3><button type="button" data-cn="1" aria-label="'+L('Next','Sau')+'">›</button></div>'+body}
+ function upHTML(){var n=new Date(),t0=new Date(n.getFullYear(),n.getMonth(),n.getDate()),o=[];
+  for(var i=0;i<400&&o.length<8;i++){var dt=new Date(t0.getFullYear(),t0.getMonth(),t0.getDate()+i);hol(dt).forEach(function(x){if(o.length<8)o.push({dt:dt,x:x,i:i})})}
+  return o.map(function(e){return '<div class="up glass'+(e.x.o?' off':'')+'"><div class="ud"><b>'+e.dt.getDate()+'</b><span>'+(LANG==='vi'?'Th'+(e.dt.getMonth()+1):e.dt.toLocaleDateString('en-GB',{month:'short'}))+'</span></div><div class="ui"><b>'+esc(e.x.n)+'</b><span>'+esc(e.dt.toLocaleDateString(LOC(),{weekday:'long',year:'numeric'}))+' · '+L('Lunar ','ÂL ')+lt(e.dt)+'</span></div><em>'+(e.i===0?L('Today','Hôm nay'):e.i===1?L('Tomorrow','Ngày mai'):L(e.i+' days left','Còn '+e.i+' ngày'))+'</em></div>'}).join('')}
+ function homeHTML(keep){var t=new Date();if(!keep){H.y=t.getFullYear();H.m=t.getMonth();H.v='month';H.sel=new Date(H.y,H.m,t.getDate())}
+  return '<div data-nt><section class="hero glass"><div><p class="gt" id="gt"></p><h2>'+L('Welcome back, ','Chào mừng trở lại, ')+'<span class="grad">'+esc(USERS[cur].split(' ')[0])+'</span></h2><p class="lead" style="margin:0" id="ll"></p></div><div class="clk"><div class="tm" id="tm"></div><div class="dt2" id="dd"></div></div></section>'+
+  '<div class="sec"><span class="eyebrow">01</span><h3>'+L('Activity &amp; calendar','Hoạt động &amp; lịch')+'</h3><i></i></div><div class="h1g"><section class="glass" id="actbox">'+actHTML()+'</section><section class="glass" id="calbox">'+calHTML()+'</section></div>'+
+  '<div class="sec"><span class="eyebrow">02</span><h3>'+L('Upcoming holidays','Ngày lễ &amp; Tết sắp tới')+'</h3><i></i></div><div class="upg" id="upg">'+upHTML()+'</div><p class="note">'+L('Solar and lunar holidays are calculated from your device’s real-time clock. Official days off may change by government announcement.','Ngày lễ dương lịch và âm lịch được tính theo thời gian thực của thiết bị. Ngày nghỉ chính thức có thể thay đổi theo thông báo của Chính phủ.')+'</p></div>'}
  function rCal(){$('calbox').innerHTML=calHTML();var s=$('dsc');if(s)s.scrollTop=Math.max(0,(new Date().getHours()-2)*47)}
- function rAct(){$('actbox').innerHTML=actHTML()}
- function rFeed(){$('feedbox').innerHTML=feedHTML();$('rail').innerHTML=railHTML();$('ftl').setAttribute('aria-pressed',H.tab==='latest');$('ftt').setAttribute('aria-pressed',H.tab==='trending')}
- function tick(){if(!$('tm')){clearInterval(ck);return}var n=new Date(),h=n.getHours();$('tm').textContent=n.toLocaleTimeString('en-GB');$('dd').textContent=n.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});$('gt').textContent=h<12?'Good morning':h<18?'Good afternoon':'Good evening'}
- function toggle(k,id,msg){var o=sj(k)||{};if(o[id])delete o[id];else{o[id]=1;if(msg)logAct(msg)}sv(k,o)}
- function homeInit(){var t=new Date();H.y=t.getFullYear();H.m=t.getMonth();H.sel=new Date(t.getFullYear(),t.getMonth(),t.getDate());H.v='month';H.tab='latest';H.topic=null;tick();clearInterval(ck);ck=setInterval(tick,1000);
+ function tick(){if(!$('tm')){clearInterval(ck);return}var n=new Date(),h=n.getHours(),hh=hol(n);$('tm').textContent=n.toLocaleTimeString(LOC());$('dd').textContent=n.toLocaleDateString(LOC(),{weekday:'long',day:'numeric',month:'long',year:'numeric'});$('gt').textContent=h<12?L('Good morning','Chào buổi sáng'):h<18?L('Good afternoon','Chào buổi chiều'):L('Good evening','Chào buổi tối');$('ll').textContent=L('Lunar today: ','Âm lịch hôm nay: ')+lt(n)+(hh.length?' · '+hh.map(function(x){return x.n}).join(', '):'')}
+ function homeInit(){clearInterval(ck);tick();ck=setInterval(tick,1000);
   $('mn').onclick=function(e){if(!$('calbox'))return;var b=e.target.closest('button');if(!b)return;var d=b.dataset;
    if(d.cv){H.v=d.cv;rCal()}
    else if(d.today){var n=new Date();H.y=n.getFullYear();H.m=n.getMonth();H.sel=new Date(H.y,H.m,n.getDate());rCal()}
    else if(d.cn){var s=+d.cn;if(H.v==='year')H.y+=s;else if(H.v==='month'){H.m+=s;if(H.m<0){H.m=11;H.y--}if(H.m>11){H.m=0;H.y++}}else{H.sel=new Date(H.sel.getFullYear(),H.sel.getMonth(),H.sel.getDate()+s);H.y=H.sel.getFullYear();H.m=H.sel.getMonth()}rCal()}
    else if(d.hm){H.m=+d.hm;H.v='month';rCal()}
-   else if(d.hd){H.sel=new Date(H.y,H.m,+d.hd);H.v='day';rCal()}
-   else if(d.ft){H.tab=d.ft;rFeed()}
-   else if(d.tp!==undefined){H.topic=(d.tp&&H.topic!==d.tp)?d.tp:null;rFeed()}
-   else if(d.lk){toggle('lk:',d.lk);rFeed()}
-   else if(d.sv){toggle('sv:',d.sv,'Saved a post');rFeed();rAct();rCal()}
-   else if(d.sh){var it=items().filter(function(x){return x.id===d.sh})[0],txt=(it.t||it.tx)+(it.u?' '+it.u:'');
-    if(navigator.share){navigator.share({text:txt}).catch(function(){})}else{try{navigator.clipboard.writeText(txt);b.textContent='Copied ✓'}catch(x){b.textContent='Copy failed'}}}
-   else if(d.dl){if(!b.dataset.arm){b.dataset.arm='1';b.textContent='Confirm?';return}sv('pst:',(sj('pst:')||[]).filter(function(p){return p.id!==d.dl}));rFeed()}
-   else if(b.id==='pbtn'){var ta=$('pt'),v=ta.value.trim();if(!v){ta.focus();return}var ps=sj('pst:')||[];ps.unshift({id:'p'+Date.now().toString(36),t:Date.now(),x:v});sv('pst:',ps.slice(0,50));logAct('Posted a note');H.tab='latest';rFeed();rAct();rCal()}
+   else if(d.hd){var nd=new Date(H.y,H.m,+d.hd);if(sameD(H.sel,H.y,H.m,+d.hd))H.v='day';H.sel=nd;rCal()}
   };
   rCal()}
  function initMv(){
@@ -501,7 +596,7 @@ a.btn{height:50px;font-size:16px}
  };
  function go(p){
   document.querySelectorAll("#nav button").forEach(function(b){b.toggleAttribute("aria-current",b.dataset.p===p);if(b.dataset.p===p)b.setAttribute("aria-current","page")});
-  $("mn").innerHTML=P[p](); window.scrollTo(0,0); if(p==="movies")initMv(); if(p==="docs")dcBind(); document.body.classList.toggle("hb",p==="home"); if(p==="home")homeInit(); else{clearInterval(ck);logAct("Opened "+NAMES[p])}
+  curP=p;$("mn").innerHTML=P[p](); window.scrollTo(0,0); if(p==="movies")initMv(); if(p==="docs")dcBind(); document.body.classList.toggle("hb",p==="home"); if(p==="home")homeInit(); else{clearInterval(ck);logAct("Opened "+NAMES[p])}
   if(p==="data")$("cf").addEventListener("submit",async function(e){
    e.preventDefault();var m=$("cm");m.className="msg";
    var o=$("o").value,n=$("n").value,c=$("c").value;
