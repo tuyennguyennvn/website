@@ -625,6 +625,123 @@ button.bkn.mini{width:100%;height:auto;padding:10px 16px;border-radius:99px;marg
 .sdgp{margin:0 0 14px}.sdgp .ovbar i{width:0;background:linear-gradient(90deg,#4f46e5,#8b9cff);transition:width .3s}
 .sdst{display:inline-flex;gap:6px}.sdst button{width:30px;height:30px;border-radius:50%;border:1.5px solid #d3e2e6;background:#fff;color:#0f766e;font:700 16px Inter,sans-serif;cursor:pointer}.sdst button:hover{border-color:#0f766e}
 .amb{height:8px;border-radius:99px;background:rgba(27,43,52,.1);overflow:hidden;margin-top:4px}.amb i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#0f766e,#0e7490)}
+
+/* ===== Responsive standards (signed-in UI): Desktop / Tablet / Mobile =====
+   Type scale: body 16px · secondary 14–15px · captions >=12px (never below)
+   Touch targets >=44px on touch · inputs 16px on mobile (no iOS zoom) · line length <=70ch */
+body.in{font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+#app{grid-template-columns:clamp(232px,17vw,280px) minmax(0,1fr)}
+main{width:100%;max-width:1280px;margin-inline:auto;padding:clamp(24px,3vw,48px) clamp(20px,3.5vw,56px) 64px}
+h2{font-size:clamp(26px,1.2rem + 1.6vw,40px);line-height:1.15}
+.lead{font-size:16px;line-height:1.6;max-width:68ch}
+.tile h3,.rail h4{font-size:18px}.tile p{font-size:15px;line-height:1.55}
+.post p{max-width:70ch}
+.nav button{font-size:15px;letter-spacing:.05em;min-height:44px;padding-top:10px;padding-bottom:10px}
+.note,.ph div span,.tp span,.stt span,.ui span,.tag,.up em,.dsh,.dsh em{font-size:13px}
+.ud span{font-size:12px}.dy small{font-size:11px}
+.pa button,.pa a{font-size:14px}
+.chip{font-size:14px}
+a,button,.chip,.dc,.mv{-webkit-tap-highlight-color:transparent}
+@media (min-width:1500px){main{max-width:1360px}.mvg{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}}
+@media (min-width:761px) and (max-width:1000px){
+ #app{grid-template-columns:220px minmax(0,1fr)}
+ aside{padding:28px 18px}.brand{font-size:20px}
+ main{padding:24px 24px 56px}
+ .nav button{font-size:14px}
+}
+@media (hover:none){.post:hover,.dc:hover{transform:none}}
+@media (max-width:760px){
+ body.in aside{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(10,14,28,.9);display:flex;flex-flow:row wrap;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+ .brand{order:1;flex:1 1 auto;margin:0;font-size:20px}
+ aside .lang{order:2;margin:0!important;align-self:center}
+ aside .me{order:3;flex:1 1 0;min-width:0;margin:0;width:auto}
+ aside .out{order:4;flex:none;margin:0!important;height:44px;padding:0 18px}
+ .lang button{min-height:36px;padding:7px 12px}
+ /* bottom tab bar: thumb-reachable primary navigation */
+ .nav{position:fixed;left:0;right:0;bottom:0;z-index:40;flex-direction:row;gap:0;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;padding:0 6px env(safe-area-inset-bottom,0px);background:rgba(10,14,28,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);max-width:100%}
+ .nav::-webkit-scrollbar{display:none}
+ .nav button{flex:0 0 auto;min-width:92px;min-height:56px;margin:0;padding:8px 12px;text-align:center;text-transform:none;letter-spacing:0;font-size:14px;white-space:nowrap;border-left:0;border-top:3px solid transparent;border-bottom:0;scroll-snap-align:center}
+ .nav button[aria-current=page]{border-top-color:var(--accent);border-bottom-color:transparent;color:#fff}
+ .md{z-index:100}.mb{padding:18px;border-radius:20px;max-height:calc(100dvh - 24px)}
+ main{padding:20px 16px calc(84px + env(safe-area-inset-bottom,0px))}
+ h2{font-size:clamp(24px,7vw,30px)}
+ .lead{font-size:15px;margin-bottom:20px}
+ .hero{padding:20px 18px;gap:14px;margin-bottom:20px}
+ .hero .tm{font-size:clamp(32px,10vw,40px)}
+ .tile{padding:16px;border-radius:20px}
+ .post{padding:16px}.post h4{font-size:18px}
+ .fh{margin-bottom:12px}
+ .pi,.tb .pi,.comp textarea,input[type=text],input[type=email],input[type=password]{font-size:16px}
+ .tb{gap:10px}.tb .field{max-width:none;flex:1 1 100%}.tb .pi{width:100%;height:48px}
+ .chip{height:44px}.pb{height:44px}.pa button,.pa a{height:40px}
+ .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px}.chips::-webkit-scrollbar{display:none}.chip{flex:none}
+ .mvg,.dcg{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
+ .scg{grid-template-columns:repeat(auto-fit,minmax(96px,1fr))}
+}
+@media (max-width:360px){.mvg,.dcg{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.nav button{min-width:84px;padding:8px 8px}}
+
+/* ===== Compact forms (all signed-in categories: Movies, Study, Docs, Data, Admin) ===== */
+#app label{font-size:13px;margin:0 0 5px}
+#app .pi,#app input[type=text],#app input[type=email],#app input[type=password],#app input[type=number]{height:42px;font-size:15px;border-radius:999px}
+#app .pi{padding:0 16px!important;margin-bottom:10px}
+#app .field{margin-bottom:10px}
+#app .field input{padding-left:42px}
+#app .field svg{left:14px;width:18px;height:18px}
+#app .tb .pi,#app .tb .field input{height:40px;font-size:14px}
+#app .two{gap:0 12px}
+#app form.card,#app form.dform{padding:16px 18px 14px;border-radius:20px}
+#app .dform{max-width:660px}
+#app .seg{padding:3px;margin-bottom:12px!important}
+#app .seg button{padding:6px 14px;font-size:13px}
+#app .epbox{margin:2px 0 12px;padding:10px 12px;border-radius:16px}
+#app .eph{margin-bottom:8px;gap:8px}
+#app .eph .pi{height:34px;width:150px;font-size:13px;margin:0}
+#app .eprow{margin-bottom:6px}#app .eprow .pi{height:36px;font-size:13px}
+#app .mini{height:32px;padding:0 12px;font-size:13px}
+#app .stl{font-size:11.5px;margin-bottom:6px}
+#app .msg{min-height:16px;margin:0 0 8px 2px;font-size:13px}
+#app .dform .btn,#app .fa .btn,#app form.card .btn{height:42px;padding:0 24px;font-size:15px;width:auto;box-shadow:0 4px 12px rgba(15,118,110,.22)}
+#app .fa{gap:8px;margin-top:4px}#app .fa .alt{min-height:42px;font-size:14px;padding:0 18px}
+#app .chip{height:36px;padding:0 14px;font-size:13.5px}
+#app .comp textarea{font-size:15px;min-height:44px;padding:10px 14px}
+@media (max-width:760px){
+ #app .pi,#app input[type=text],#app input[type=email],#app input[type=password],#app input[type=number],#app .tb .pi,#app .tb .field input{height:44px;font-size:16px}
+ #app .eph .pi{height:40px;font-size:16px;width:100%}
+ #app .eprow .pi{height:40px;font-size:16px}
+ #app .mini{height:38px}
+ #app .seg button{min-height:38px}
+ #app .chip{height:42px}
+ #app form.card,#app form.dform{padding:14px 14px 12px}
+ #app .dform .btn,#app .fa .btn,#app form.card .btn{height:46px;width:100%}
+ #app .comp textarea{font-size:16px}
+}
+
+/* ===== Softwares page ===== */
+.swhero{margin-bottom:18px}
+.swcg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:16px}
+.swc{position:relative;overflow:hidden;text-align:left;font-family:inherit;color:var(--text);background:#fff;border:1.5px solid rgba(27,43,52,.12);border-radius:20px;padding:18px 16px 16px;cursor:pointer;display:flex;flex-direction:column;gap:12px;transition:transform .15s,box-shadow .15s,border-color .15s}
+.swc::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--a),var(--b));opacity:.5}
+.swc:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(27,43,52,.12)}
+.swc[aria-pressed=true]{border-color:var(--a);box-shadow:0 0 0 3px rgba(27,43,52,.06),0 10px 26px rgba(27,43,52,.12)}.swc[aria-pressed=true]::before{opacity:1}
+.swc:focus-visible,.swsub .chip:focus-visible{outline:3px solid #0f766e;outline-offset:2px}
+.swi0{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 6px 16px rgba(27,43,52,.18)}.swi0 svg{width:24px;height:24px}
+.swtx{display:flex;flex-direction:column;gap:2px;min-width:0}.swtx b{font-size:18px}.swtx small{color:var(--muted);font-size:13px;line-height:1.4}
+.swc em{position:absolute;top:14px;right:14px;font:700 12px Inter,sans-serif;font-style:normal;padding:3px 10px;border-radius:99px;background:rgba(27,43,52,.07);color:var(--muted)}
+.swsub{margin:0 0 14px}
+.swg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.swi{display:flex;gap:12px;align-items:flex-start;padding:14px;background:#fff;border:1px solid rgba(27,43,52,.1);border-radius:18px;box-shadow:0 1px 2px rgba(27,43,52,.05)}
+.swa{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none;font:800 18px Inter,sans-serif;color:#fff;background:linear-gradient(135deg,var(--a),var(--b))}
+.swb{flex:1;min-width:0}.swb b{display:block;font-size:16px;overflow-wrap:anywhere}.swb p{margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.45;overflow-wrap:anywhere}
+.swt{display:inline-block;margin-top:4px;padding:2px 10px;border-radius:99px;font:700 12px Inter,sans-serif;background:rgba(15,118,110,.1);color:#0f766e}
+.swx{display:flex;flex-direction:column;gap:6px;align-items:stretch}.swx .mini{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+.upd{margin:10px 0 0;font-size:12px;line-height:1.3;color:var(--muted);text-align:center}
+@media (max-width:760px){
+ .swcg{grid-template-columns:1fr;gap:10px}
+ .swc{flex-direction:row;align-items:center;padding:14px 56px 14px 14px}.swc em{top:50%;transform:translateY(-50%)}
+ .swg{grid-template-columns:1fr}
+ .swi{flex-wrap:wrap}.swx{flex-direction:row;width:100%}.swx .mini{flex:1;height:40px}
+ aside .upd{order:5;flex:1 0 100%;margin:0;text-align:right}
+}
 </style>
 </head>
 <body>
@@ -689,6 +806,7 @@ button.bkn.mini{width:100%;height:auto;padding:10px 16px;border-radius:99px;marg
   </nav>
   <div class="lang" id="lgs" role="group" aria-label="Language"><button type="button" data-lang="vi" aria-pressed="false" aria-label="Tiếng Việt">Tiếng Việt</button><button type="button" data-lang="en" aria-pressed="false" aria-label="English">English</button></div>
   <button class="out" id="lo">Sign out</button>
+  <div class="upd" id="upd" data-nt></div>
  </aside>
  <main id="mn"></main>
  <div id="gst" class="md hide" role="alertdialog" aria-modal="true" aria-labelledby="gstt" data-nt><div class="mb dt" style="max-width:440px;text-align:center"><span class="bki big" style="margin:0 auto 14px"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><h3 id="gstt"></h3><p id="gstp" style="line-height:1.6"></p><div class="fa" style="justify-content:center"><button type="button" class="btn" id="gstj"></button><button type="button" class="alt" id="gstc"></button></div></div></div>
@@ -1547,18 +1665,62 @@ button.bkn.mini{width:100%;height:auto;padding:10px 16px;border-radius:99px;marg
  $('sme').onclick=function(){var x=sdLoad().filter(function(y){return y.id===sdCur})[0];if(!x)return;sdEd=x.id;sdClose();sdForm(x)};
  $('smdel').onclick=function(){if(!this.dataset.arm){this.dataset.arm='1';this.textContent=L('Confirm delete?','Xác nhận xóa?');return}var a=sdLoad(),x=a.filter(function(y){return y.id===sdCur})[0];sdSave(a.filter(function(y){return y.id!==sdCur}));if(x)logAct('Deleted study resource: '+x.t);sdClose();sdRefresh()};
  window.addEventListener('scroll',function(){var y=window.scrollY||0;[].forEach.call(document.querySelectorAll('.dsticky,.mvhero'),function(s){var c=s.classList.contains('cp');if(!c&&y>70)s.classList.add('cp');else if(c&&y<12)s.classList.remove('cp')})},{passive:true});
+ /* ===== Softwares: Microsoft (Windows / Office / Others), Adobe, Tools ===== */
+ var SWC=[['ms','Microsoft','Microsoft','Windows, Office and more','Windows, Office và các sản phẩm khác','#0078d4','#4cc2ff','<svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z"/></svg>'],
+  ['ad','Adobe','Adobe','Creative apps and PDF tools','Ứng dụng sáng tạo và công cụ PDF','#e1251b','#ff8a5c','<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 4 3.5 20h4.3l1.3-3.2h5.8l1.3 3.2h4.3zM12 10.2l1.9 4.6h-3.8z"/></svg>'],
+  ['tl','Tools','Công cụ','Everyday utilities','Tiện ích dùng hằng ngày','#0f766e','#2dd4bf','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.5 2.5-2.2-.5-.5-2.2z"/></svg>']],
+  SWS=[['win','Windows','Windows'],['off','Office','Office'],['oth','Others','Khác']],swF={c:'ms',s:'all',q:''};
+ function swLoad(){try{var j=JSON.parse(sget('soft:'+cur)||'[]');return Array.isArray(j)?j:[]}catch(e){return[]}}
+ function swSave(a){sset('soft:'+cur,JSON.stringify(a))}
+ function swC(k){return SWC.filter(function(c){return c[0]===k})[0]||SWC[0]}
+ function swSN(k){var s=SWS.filter(function(x){return x[0]===k})[0];return s?L(s[1],s[2]):''}
+ function swFilt(){return swLoad().filter(function(x){if(x.c!==swF.c)return false;if(swF.c==='ms'&&swF.s!=='all'&&x.s!==swF.s)return false;return !swF.q||((x.t||'')+' '+(x.n||'')).toLowerCase().indexOf(swF.q)>-1})}
+ function swCats(){var a=swLoad();return SWC.map(function(c){var n=a.filter(function(x){return x.c===c[0]}).length;return '<button type="button" class="swc" data-c="'+c[0]+'" aria-pressed="'+(swF.c===c[0])+'" style="--a:'+c[5]+';--b:'+c[6]+'"><span class="swi0">'+c[7]+'</span><span class="swtx"><b>'+L(c[1],c[2])+'</b><small>'+L(c[3],c[4])+'</small></span><em>'+n+'</em></button>'}).join('')}
+ function swSub(){if(swF.c!=='ms')return '';var a=swLoad().filter(function(x){return x.c==='ms'});
+  return '<div class="chips swsub" role="group" aria-label="Microsoft">'+[['all','All','Tất cả']].concat(SWS).map(function(s){var n=s[0]==='all'?a.length:a.filter(function(x){return x.s===s[0]}).length;return '<button type="button" class="chip" data-s="'+s[0]+'" aria-pressed="'+(swF.s===s[0])+'">'+L(s[1],s[2])+' <span class="cc">'+n+'</span></button>'}).join('')+'</div>'}
+ function swHead(){var c=swC(swF.c);return L(c[1],c[2])+(swF.c==='ms'&&swF.s!=='all'?' › '+swSN(swF.s):'')}
+ function swItems(){var a=swFilt();if(!a.length)return '<div class="empty" style="grid-column:1/-1">'+L('No software here yet. Tap “Add software” to save your first one.','Chưa có phần mềm nào ở đây. Bấm “Thêm phần mềm” để lưu mục đầu tiên.')+'</div>';
+  return a.map(function(x){var c=swC(x.c),sub=x.c==='ms'&&x.s?swSN(x.s):'';
+   return '<article class="swi" style="--a:'+c[5]+';--b:'+c[6]+'"><div class="swa">'+esc((x.t||'?').charAt(0).toUpperCase())+'</div><div class="swb"><b>'+esc(x.t)+'</b>'+(sub?'<span class="swt">'+esc(sub)+'</span>':'')+(x.n?'<p>'+esc(x.n)+'</p>':'')+'</div><div class="swx">'+(x.u&&okUrl(x.u)?'<a class="mini" href="'+esc(x.u)+'" target="_blank" rel="noopener noreferrer">'+L('Open','Mở')+'</a>':'')+'<button type="button" class="mini rm" data-sw="del" data-wid="'+esc(x.id)+'">'+L('Delete','Xóa')+'</button></div></article>'}).join('')}
+ function swForm(){var ms=swF.c==='ms',sel=swF.s!=='all'?swF.s:'win';
+  var u='<div><label for="swU">'+L('Download or website link (optional)','Liên kết tải về hoặc trang web (tùy chọn)')+'</label><input id="swU" type="text" class="pi" placeholder="https://..."></div>';
+  var g=ms?'<div><label for="swS">'+L('Group','Nhóm')+'</label><select id="swS" class="pi">'+SWS.map(function(s){return '<option value="'+s[0]+'"'+(s[0]===sel?' selected':'')+'>'+L(s[1],s[2])+'</option>'}).join('')+'</select></div>':'';
+  return '<form class="card dform" id="swform" novalidate><label for="swT">'+L('Software name','Tên phần mềm')+'</label><input id="swT" type="text" class="pi" maxlength="80" placeholder="'+L('e.g. Microsoft 365','VD: Microsoft 365')+'"><div class="'+(ms?'two':'')+'">'+u+g+'</div><label for="swN">'+L('Note (optional)','Ghi chú (tùy chọn)')+'</label><input id="swN" type="text" class="pi" maxlength="160"><div class="msg" id="swm" role="alert"></div><div class="fa"><button class="btn" type="submit">'+L('Save','Lưu')+'</button><button type="button" class="alt" data-sw="cancel">'+L('Cancel','Hủy')+'</button></div></form>'}
+ function swPage(){return '<div data-nt id="sww"><section class="glass hero swhero"><div><h2>'+L('Softwares','Phần mềm')+'</h2><p class="lead" style="margin:0">'+L('Your software library, organized by publisher and purpose.','Kho phần mềm của bạn, sắp xếp theo hãng và mục đích sử dụng.')+'</p></div></section>'
+  +'<div class="swcg" id="swcg">'+swCats()+'</div><div id="swsub">'+swSub()+'</div>'
+  +'<div class="tb"><div class="field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="swq" type="text" placeholder="'+L('Search software','Tìm phần mềm')+'" aria-label="'+L('Search software','Tìm phần mềm')+'" value="'+esc(swF.q)+'"></div><button type="button" class="mini favadd" data-sw="add">'+L('Add software','Thêm phần mềm')+'</button></div>'
+  +'<div id="swfw"></div><div class="msg" id="swnote" role="status"></div>'
+  +'<h4 class="dsh"><span id="swh">'+swHead()+'</span><em id="swcnt">'+swFilt().length+'</em></h4><div class="swg" id="swg">'+swItems()+'</div></div>'}
+ function swRefresh(){var g=function(i,h){var e=$(i);if(e)e.innerHTML=h};g('swcg',swCats());g('swsub',swSub());g('swg',swItems());g('swh',swHead());var c=$('swcnt');if(c)c.textContent=swFilt().length}
+ function swInit(){var w=$('sww');if(!w)return;
+  w.addEventListener('click',function(e){var b;
+   if((b=e.target.closest('.swc[data-c]'))){swF.c=b.dataset.c;swF.s='all';$('swfw').innerHTML='';swRefresh();return}
+   if((b=e.target.closest('.chip[data-s]'))){swF.s=b.dataset.s;swRefresh();return}
+   if((b=e.target.closest('[data-sw]'))){var k=b.dataset.sw;
+    if(k==='add'){$('swfw').innerHTML=swForm();var f=$('swT');f.scrollIntoView({block:'center'});f.focus()}
+    else if(k==='cancel'){$('swfw').innerHTML=''}
+    else if(k==='del'){if(!b.dataset.arm){b.dataset.arm='1';b.textContent=L('Confirm?','Xác nhận?');return}var a=swLoad(),x=a.filter(function(y){return y.id===b.dataset.wid})[0];swSave(a.filter(function(y){return y.id!==b.dataset.wid}));if(x)logAct('Deleted software: '+x.t);swRefresh()}}});
+  w.addEventListener('input',function(e){if(e.target.id==='swq'){swF.q=e.target.value.toLowerCase().trim();swRefresh()}});
+  w.addEventListener('submit',function(e){e.preventDefault();if(e.target.id!=='swform')return;
+   var t=$('swT').value.trim(),u=$('swU').value.trim(),m=$('swm'),s=$('swS');m.textContent='';
+   if(!t){m.textContent=L('Please enter a name.','Vui lòng nhập tên phần mềm.');$('swT').focus();return}
+   if(u&&!okUrl(u)){m.textContent=L('The link must start with http:// or https://','Liên kết phải bắt đầu bằng http:// hoặc https://');return}
+   var a=swLoad();a.unshift({id:'w'+Date.now().toString(36),c:swF.c,s:swF.c==='ms'&&s?s.value:'',t:t,u:u,n:$('swN').value.trim(),ts:Date.now()});swSave(a);logAct('Added software: '+t);
+   $('swfw').innerHTML='';swRefresh();flash('swnote',L('Added.','Đã thêm.'),1)})}
+ function updTxt(){var e=$('upd');if(e)e.textContent=L('Last updated: Nov 17, 2026','Cập nhật gần nhất: 17/11/2026')}
+ (function(){var lg=$('lgs');if(lg)lg.addEventListener('click',function(){setTimeout(updTxt,0)})})();
  var P={
   home:function(){return homeHTML()},
   movies:function(){return mvPage()},
   study:function(){return sdPage()},
   admin:function(){return isAdm()?adminHTML():''},
   docs:function(){dcur=null;return dcHome()},
-  soft:function(){return '<h2>Softwares</h2><p class="lead">Tools and installers.</p><div class="empty">No software listed yet.</div>'},
+  soft:function(){return swPage()},
   data:function(){return dataHTML()}
  };
  function go(p){
   document.querySelectorAll("#nav button").forEach(function(b){b.toggleAttribute("aria-current",b.dataset.p===p);if(b.dataset.p===p)b.setAttribute("aria-current","page")});
-  curP=p;$("mn").innerHTML=P[p](); window.scrollTo(0,0); if(p==="movies")initMv(); if(p==="docs")dcBind(); if(p==="study")stInit(); document.body.classList.toggle("hb",p==="home");document.body.classList.toggle("sm",p==="study"||p==="movies"); if(p==="home")homeInit(); else{clearInterval(ck);logAct("Opened "+NAMES[p])}
+  curP=p;$("mn").innerHTML=P[p](); window.scrollTo(0,0); if(p==="movies")initMv(); if(p==="docs")dcBind(); if(p==="study")stInit(); if(p==="soft")swInit(); updTxt(); document.body.classList.toggle("hb",p==="home");document.body.classList.toggle("sm",p==="study"||p==="movies"); if(p==="home")homeInit(); else{clearInterval(ck);logAct("Opened "+NAMES[p])}
   if(p==="data")dataBind();
   if(p==="admin")admBind();
  }
