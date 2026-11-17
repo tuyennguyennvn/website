@@ -2,347 +2,253 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NGUYEN NGOC TUYEN</title>
-<!-- Fallback: if JavaScript is disabled, the page still redirects after 30 seconds -->
-<noscript><meta http-equiv="refresh" content="30;url=https://www.facebook.com/tuyen.nguyen.fb.vn"></noscript>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Personal Vault – Sign in</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg1: #0e2e39;
-    --bg2: #0a1d27;
-    --bg3: #07141b;
-    --white: #ffffff;
-    --aqua: #8ff3ee;
-    --teal: #3fd6c6;
-    --cyan: #14a6c4;
-    --body: #c9dde3;
-    --glass: rgba(143, 243, 238, 0.06);
-    --line: rgba(143, 243, 238, 0.22);
-    color-scheme: dark;
-  }
+:root{--bg1:#0e3340;--bg2:#0a1c26;--bg3:#07121a;--text:#fff;--muted:#a9c9d0;--accent:#7ff5ea;--panel:rgba(18,52,62,.62);--line:rgba(127,245,234,.28);--err:#ff9b8a;--good:#8ff7b5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg1:#0e3340}}
+:root[data-theme="dark"]{--bg1:#0e3340}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(ellipse at 50% 30%,var(--bg1),var(--bg2) 55%,var(--bg3));overflow-x:hidden;position:relative}
+.cube{position:fixed;width:var(--s);height:var(--s);color:rgba(127,245,234,.25);pointer-events:none}
+.cube svg{width:100%;height:100%}
+.c1{--s:170px;top:-40px;left:-50px;--d:11s;--dx:70px;--dy:60px;--r:28deg}.c2{--s:300px;top:-30px;right:-60px;--d:16s;--dx:-80px;--dy:70px;--r:-20deg;--dl:-4s}.c3{--s:220px;bottom:4%;left:3%;--d:13s;--dx:60px;--dy:-80px;--r:-30deg;--dl:-7s}.c4{--s:150px;bottom:-60px;right:6%;--d:9s;--dx:-70px;--dy:-60px;--r:35deg;--dl:-2s}
+.c5{--s:80px;top:28%;left:12%;--d:7s;--dx:50px;--dy:-40px;--r:60deg;--dl:-3s}.c6{--s:110px;top:55%;right:12%;--d:10s;--dx:-60px;--dy:50px;--r:-50deg;--dl:-5s}.c7{--s:70px;top:12%;right:30%;--d:8s;--dx:40px;--dy:60px;--r:45deg;--dl:-1s}
+.cube{animation:drift var(--d,12s) ease-in-out var(--dl,0s) infinite alternate;will-change:transform}
+.cube svg{animation:glow 4s ease-in-out infinite alternate;filter:drop-shadow(0 0 6px rgba(127,245,234,.25))}
+@keyframes drift{0%{transform:translate(0,0) rotate(0) scale(1)}50%{transform:translate(calc(var(--dx)*.5),calc(var(--dy)*1.2)) rotate(calc(var(--r)*.4)) scale(1.08)}100%{transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(.94)}}
+@keyframes glow{from{opacity:.55}to{opacity:1}}
+h1 .ln{display:block}
+.ch{display:inline-block;font-style:normal;animation:hop 2.6s cubic-bezier(.3,.7,.4,1) infinite;animation-delay:calc(var(--i)*.1s);transition:color .2s;cursor:default}
+.ch:hover{color:var(--accent)!important}
+@keyframes hop{0%,55%,100%{transform:translateY(0) scale(1,1)}12%{transform:translateY(0) scale(1.12,.86)}28%{transform:translateY(-.22em) scale(.94,1.08)}42%{transform:translateY(0) scale(1.06,.94)}48%{transform:translateY(-.04em) scale(1)}}
+@media (prefers-reduced-motion:reduce){.cube,.cube svg,.ch{animation:none!important}}
+.hide{display:none!important}
+.grad{background:linear-gradient(90deg,#9bfaf1,#34d3c0 50%,#139fc4);-webkit-background-clip:text;background-clip:text;color:transparent}
+button,input{font-family:inherit}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; }
+/* Login */
+#login{position:relative;z-index:1;min-height:100%;display:flex;align-items:center;justify-content:center;padding:28px 18px}
+.box{width:100%;max-width:640px;text-align:center}
+.box .card{max-width:460px;margin-left:auto;margin-right:auto}
+h1{margin:0;line-height:.92;font-weight:900;letter-spacing:-.04em;font-size:clamp(60px,15vw,110px)}
+h1 span{display:block}
+.sub{margin:28px auto 30px;color:var(--muted);font-size:16px;line-height:1.55;max-width:380px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:24px 22px;text-align:left;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+label{display:block;font-size:14px;font-weight:600;color:var(--muted);margin:0 0 8px}
+.field{position:relative;margin-bottom:16px}
+.field svg{position:absolute;left:16px;top:50%;width:20px;height:20px;transform:translateY(-50%);color:var(--accent);pointer-events:none}
+input[type=email],input[type=password],input[type=text]{width:100%;height:52px;border-radius:999px;border:1px solid var(--line);background:rgba(7,18,26,.55);color:var(--text);font:500 16px Inter,sans-serif;padding:0 18px 0 46px;outline:none;transition:border-color .2s,box-shadow .2s}
+input:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px rgba(127,245,234,.25)}
+input.bad{border-color:var(--err)}
+.toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--muted);font:600 13px Inter,sans-serif;padding:8px 12px;border-radius:999px;cursor:pointer}
+.toggle:hover{color:var(--accent)}
+.msg{min-height:20px;font-size:14px;margin:-4px 0 12px 4px;color:var(--err)}
+.msg.good{color:var(--good)}
+.btn{width:100%;height:54px;border:0;border-radius:999px;cursor:pointer;font:700 17px Inter,sans-serif;color:#052029;background:linear-gradient(90deg,#8ff7ee,#2fc7c4 60%,#16a6c9);box-shadow:0 8px 24px rgba(47,199,196,.35)}
+.btn:hover{filter:brightness(1.06)}
+.btn:focus-visible,.nav button:focus-visible,.out:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.btn:disabled{opacity:.6;cursor:wait}
+.wait{margin-top:16px;padding:14px 16px;border:1px solid var(--line);border-radius:18px;font-size:14px;color:var(--muted)}
+.bar{height:6px;border-radius:99px;background:rgba(127,245,234,.15);margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8ff7ee,#16a6c9)}
+.bar.run i{width:100%;transition:width 5s linear}
 
-  body {
-    min-height: 100svh;
-    display: grid;
-    place-items: center;
-    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 55%, var(--bg3) 100%);
-    color: var(--body);
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    overflow: hidden;
-  }
-
-  /* ---------- Background: soft glow + floating wireframe cubes ---------- */
-  .glow {
-    position: fixed; z-index: 0; pointer-events: none;
-    width: 70vmax; height: 70vmax;
-    left: 50%; top: 42%;
-    margin: -35vmax 0 0 -35vmax;
-    background: radial-gradient(circle, rgba(20, 166, 196, 0.20), transparent 62%);
-  }
-
-  .cube {
-    position: fixed; z-index: 1; pointer-events: none;
-    animation: float 10s ease-in-out infinite alternate;
-  }
-  .cube.c1 { width: 150px; left: -34px;  top: -18px;  animation-delay: -2s; }
-  .cube.c2 { width: 230px; left: 33%;    top: -80px;  animation-delay: -5s; opacity: .7; }
-  .cube.c3 { width: 280px; right: -70px; top: -40px;  animation-delay: -7s; }
-  .cube.c4 { width: 120px; right: 7%;    bottom: -26px; animation-delay: -3s; }
-  .cube.c5 { width: 190px; left: 5%;     bottom: 6%;  animation-delay: -8s; opacity: .8; }
-
-  @keyframes float {
-    from { transform: translateY(-12px) rotate(-2deg); }
-    to   { transform: translateY(14px)  rotate(2deg); }
-  }
-
-  /* ---------- Content ---------- */
-  main {
-    position: relative; z-index: 2;
-    width: min(100%, 1100px);
-    padding: 32px 24px;
-    text-align: center;
-  }
-
-  h1 {
-    font-weight: 800;
-    font-size: clamp(2.4rem, 10vw, 7rem);
-    line-height: 1.08;
-    letter-spacing: -0.025em;
-  }
-  h1 .line { display: block; white-space: nowrap; }
-
-  /* each letter jumps and changes size in a wave */
-  .ch {
-    display: inline-block;
-    transform-origin: 50% 85%;
-    color: var(--c, var(--white));
-    animation:
-      drop .8s cubic-bezier(.2,1.4,.4,1) calc(var(--i) * .06s) backwards,
-      jump 2.4s ease-in-out calc(1.6s + var(--i) * .09s) infinite;
-    will-change: transform;
-  }
-  .ch.sp { width: .28em; }
-
-  @keyframes drop {
-    from { opacity: 0; transform: translateY(-.9em) scale(.3); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  @keyframes jump {
-    0%, 55%, 100% { transform: translateY(0) scale(1); }
-    22%           { transform: translateY(-.16em) scale(1.32); }
-    38%           { transform: translateY(0) scale(.94); }
-  }
-
-  .welcome {
-    max-width: 34rem;
-    margin: 26px auto 0;
-    font-size: clamp(1rem, 2.1vw, 1.15rem);
-    line-height: 1.65;
-    color: var(--body);
-    animation: fade 1s ease 1.2s both;
-  }
-
-  /* ---------- Email ---------- */
-  .email {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 22px;
-    padding: 10px 18px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: var(--glass);
-    color: var(--aqua);
-    font-weight: 500;
-    font-size: 1rem;
-    text-decoration: none;
-    overflow-wrap: anywhere;
-    transition: background .2s ease, transform .2s ease, border-color .2s ease;
-    animation: fade 1s ease 1.4s both;
-  }
-  .email svg { width: 20px; height: 20px; flex: none; }
-  .email:hover { background: rgba(143,243,238,0.14); border-color: var(--aqua); transform: translateY(-1px); }
-  .email:focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; }
-
-  /* ---------- Countdown card ---------- */
-  .redirect {
-    margin: 42px auto 0;
-    width: fit-content;
-    max-width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 12px 14px;
-    background: var(--glass);
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    -webkit-backdrop-filter: blur(14px);
-            backdrop-filter: blur(14px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    text-align: left;
-    animation: fade 1s ease 1.6s both;
-  }
-  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-
-  .ring { position: relative; width: 60px; height: 60px; flex: none; }
-  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-  .ring .track { fill: none; stroke: rgba(143,243,238,0.16); stroke-width: 4; }
-  .ring .bar   { fill: none; stroke: url(#grad); stroke-width: 4; stroke-linecap: round; }
-  .ring .num {
-    position: absolute; inset: 0;
-    display: grid; place-items: center;
-    font-weight: 800; font-size: 1.05rem;
-    font-variant-numeric: tabular-nums;
-    color: var(--white);
-  }
-
-  .info strong { display: block; font-weight: 600; font-size: 1rem; color: var(--white); }
-  .info span   { display: block; margin-top: 2px; font-size: 0.875rem; color: var(--body); }
-
-  .actions { display: flex; gap: 8px; margin-left: 6px; }
-
-  .btn {
-    appearance: none;
-    border: 1px solid var(--line);
-    background: transparent;
-    color: var(--white);
-    font: 500 0.9rem Inter, system-ui, sans-serif;
-    padding: 11px 18px;
-    border-radius: 14px;
-    cursor: pointer;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-  }
-  .btn:hover { background: rgba(143,243,238,0.12); transform: translateY(-1px); }
-  .btn.primary {
-    border-color: transparent;
-    background: linear-gradient(100deg, var(--aqua), var(--teal) 55%, var(--cyan));
-    color: #04222b;
-    font-weight: 600;
-    box-shadow: 0 8px 26px rgba(20, 166, 196, 0.35);
-  }
-  .btn.primary:hover { background: linear-gradient(100deg, var(--aqua), var(--teal) 45%, var(--cyan)); box-shadow: 0 12px 34px rgba(20, 166, 196, 0.5); }
-  .btn:focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; }
-
-  .redirect.stopped .ring { display: none; }
-
-  /* ---------- Mobile ---------- */
-  @media (max-width: 640px) {
-    .cube.c2, .cube.c5 { display: none; }
-    .redirect { flex-wrap: wrap; justify-content: center; border-radius: 26px; gap: 14px; padding: 18px; }
-    .info { flex: 1 1 60%; text-align: left; }
-    .actions { width: 100%; margin-left: 0; }
-    .actions .btn { flex: 1; }
-  }
-
-  /* ---------- Reduced motion ---------- */
-  @media (prefers-reduced-motion: reduce) {
-    .cube, .ch, .welcome, .email, .redirect { animation: none !important; }
-    .btn { transition: none; }
-  }
+.alt{display:block;width:100%;margin-top:14px;background:none;border:1px solid var(--line);color:var(--accent);border-radius:999px;height:46px;font:600 15px Inter,sans-serif;cursor:pointer;transition:background .2s}
+.alt:hover{background:rgba(127,245,234,.1)}
+.alt:focus-visible{outline:3px solid #fff;outline-offset:3px}
+#wl h3{margin:0 0 6px;font-size:22px}
+.wlp{margin:0 0 18px;color:var(--muted);font-size:14px;line-height:1.5}
+#wl input[type=email]{padding-left:46px}
+.done{padding:14px 16px;border:1px solid var(--line);border-radius:18px;background:rgba(127,245,234,.08);font-size:15px;line-height:1.55}
+.done a{display:inline-block;margin-top:10px;color:var(--accent);font-weight:600;word-break:break-all}
+.back{background:none;border:0;color:var(--muted);font:600 14px Inter,sans-serif;margin-top:14px;cursor:pointer;padding:6px 0}
+.back:hover{color:var(--accent)}
+.contact{margin:30px auto 0;display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 14px;padding:12px 22px;border:1px solid var(--line);border-radius:999px;background:var(--panel);font-size:15px;color:var(--muted)}
+.contact b{color:#fff;font-weight:700}
+.contact a{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:600;text-decoration:none}
+.contact a:hover{text-decoration:underline}
+.contact svg{width:18px;height:18px}
+/* App */
+#app{position:relative;z-index:1;min-height:100%;display:grid;grid-template-columns:260px 1fr}
+aside{padding:36px 28px;border-right:1px solid var(--line);background:rgba(7,18,26,.35);display:flex;flex-direction:column;gap:6px}
+.brand{font-weight:900;font-size:22px;letter-spacing:-.03em;margin-bottom:26px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav button{background:none;border:0;text-align:left;color:var(--muted);font:500 17px Inter,sans-serif;letter-spacing:.01em;text-transform:uppercase;padding:12px 0;cursor:pointer;border-left:3px solid transparent;padding-left:14px;margin-left:-17px;transition:color .15s}
+.nav button:hover{color:#fff}
+.nav button[aria-current=page]{color:#fff;font-weight:700;border-left-color:var(--accent)}
+.out{margin-top:auto;background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;height:42px;font:600 14px Inter,sans-serif;cursor:pointer}
+.out:hover{color:var(--accent)}
+main{padding:44px clamp(20px,5vw,64px);max-width:980px}
+h2{margin:0 0 6px;font-size:clamp(30px,5vw,46px);font-weight:900;letter-spacing:-.035em}
+.lead{color:var(--muted);margin:0 0 28px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px}
+.tile h3{margin:0 0 6px;font-size:17px}.tile p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+.row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.row:last-child{border:0}.row b{color:var(--muted);font-weight:500}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;align-items:start}
+.cols .card h3{margin:0 0 14px;font-size:18px}
+.empty{border:1px dashed var(--line);border-radius:22px;padding:34px;text-align:center;color:var(--muted)}
+.hamb{display:none}
+@media (max-width:760px){
+ #app{grid-template-columns:1fr}
+ aside{border-right:0;border-bottom:1px solid var(--line);padding:18px 20px}
+ .brand{margin-bottom:8px}
+ .nav{flex-direction:row;overflow-x:auto;gap:4px;padding-bottom:4px}
+ .nav button{white-space:nowrap;font-size:13px;margin-left:0;border-left:0;border-bottom:2px solid transparent;padding:10px 10px}
+ .nav button[aria-current=page]{border-bottom-color:var(--accent)}
+ .out{margin-top:10px}
+ .cube{opacity:.5}
+}
+@media (prefers-reduced-motion:reduce){.bar.run i{transition:none}}
 </style>
 </head>
-
 <body>
-  <div class="glow" aria-hidden="true"></div>
+<div class="cube c1"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M50 4 94 28V72L50 96 6 72V28Z M50 50V96 M50 50 6 28 M50 50 94 28"/></svg></div>
+<div class="cube c2"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M50 4 94 28V72L50 96 6 72V28Z M50 50V96 M50 50 6 28 M50 50 94 28"/></svg></div>
+<div class="cube c3"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M50 4 94 28V72L50 96 6 72V28Z M50 50V96 M50 50 6 28 M50 50 94 28"/></svg></div>
+<div class="cube c4"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M50 4 94 28V72L50 96 6 72V28Z M50 50V96 M50 50 6 28 M50 50 94 28"/></svg></div>
 
-  <!-- Wireframe cube used in the background -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="cube" viewBox="0 0 100 116">
-      <polygon points="50,0 100,29 50,58 0,29"   fill="#8ff3ee" fill-opacity=".10" stroke="#8ff3ee" stroke-opacity=".28" stroke-width="1"/>
-      <polygon points="0,29 50,58 50,116 0,87"   fill="#8ff3ee" fill-opacity=".04" stroke="#8ff3ee" stroke-opacity=".22" stroke-width="1"/>
-      <polygon points="100,29 100,87 50,116 50,58" fill="#14a6c4" fill-opacity=".07" stroke="#8ff3ee" stroke-opacity=".22" stroke-width="1"/>
-    </symbol>
-  </svg>
-  <svg class="cube c1" viewBox="0 0 100 116" aria-hidden="true"><use href="#cube"/></svg>
-  <svg class="cube c2" viewBox="0 0 100 116" aria-hidden="true"><use href="#cube"/></svg>
-  <svg class="cube c3" viewBox="0 0 100 116" aria-hidden="true"><use href="#cube"/></svg>
-  <svg class="cube c4" viewBox="0 0 100 116" aria-hidden="true"><use href="#cube"/></svg>
-  <svg class="cube c5" viewBox="0 0 100 116" aria-hidden="true"><use href="#cube"/></svg>
+<div class="cube c5"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M50 4 94 28V72L50 96 6 72V28Z M50 50V96 M50 50 6 28 M50 50 94 28"/></svg></div>
+<div class="cube c6"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><path d="M50 4 94 28V72L50 96 6 72V28Z M50 50V96 M50 50 6 28 M50 50 94 28"/></svg></div>
+<div class="cube c7"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M50 4 94 28V72L50 96 6 72V28Z M50 50V96 M50 50 6 28 M50 50 94 28"/></svg></div>
+<section id="login">
+ <div class="box">
+  <h1 id="ttl" aria-label="Personal Vault"><div class="ln" data-c="w">Personal</div><div class="ln" data-c="g">Vault</div></h1>
+  <p class="sub">A private place for my documents. Sign in with your @tuyen.dpdns.org email.</p>
+  <form class="card" id="lf" novalidate>
+   <label for="em">Email</label>
+   <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+    <input id="em" type="email" autocomplete="username" placeholder="name@tuyen.dpdns.org" required></div>
+   <label for="pw">Password</label>
+   <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+    <input id="pw" type="password" autocomplete="current-password" placeholder="Enter your password" required style="padding-right:76px">
+    <button class="toggle" type="button" data-t="pw" aria-label="Show password">Show</button></div>
+   <div class="msg" id="lm" role="alert" aria-live="polite"></div>
+   <button class="btn" id="lb" type="submit">Sign in</button>
+   <div class="wait hide" id="wt">Verifying your account… signing you in shortly.<div class="bar" id="br"><i></i></div></div>
+   <button type="button" class="alt" id="jw">Not a member? Join the waiting list</button>
+  </form>
+  <form class="card hide" id="wl" novalidate>
+   <h3>Join the waiting list</h3>
+   <p class="wlp">Enter your personal email to request access to Personal Vault.</p>
+   <div id="wf">
+    <label for="wnm">Full name</label>
+    <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+     <input id="wnm" type="text" autocomplete="name" placeholder="Your full name" required></div>
+    <label for="wem">Your email</label>
+    <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+     <input id="wem" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+    <div class="msg" id="wm" role="alert" aria-live="polite"></div>
+    <button class="btn" type="submit">Submit</button>
+   </div>
+   <div class="done hide" id="wr" role="status">Your request will be answered within 48 hours. Please check your email, as the reply may be in your spam folder.<br><a id="wmail" href="#">Send my request to Tuyen by email</a></div>
+   <button type="button" class="back" id="wb">Back to sign in</button>
+  </form>
+  <div class="contact"><b>Contact: Tuyen Nguyen</b><a href="mailto:tuyen.nguyen@tuyen.dpdns.org"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>tuyen.nguyen@tuyen.dpdns.org</a></div>
+ </div>
+</section>
 
-  <main>
-    <h1 id="name" aria-label="NGUYEN NGOC TUYEN">
-      <span class="line" data-text="NGUYEN NGOC" aria-hidden="true"></span>
-      <span class="line" data-text="TUYEN" data-gradient="true" aria-hidden="true"></span>
-    </h1>
-
-    <p class="welcome">Welcome to my personal page. You will be taken to my Facebook profile in a moment.</p>
-
-    <a class="email" href="mailto:tuyen.nguyen@tuyen.dpdns.org">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect x="3" y="5" width="18" height="14" rx="3"/>
-        <path d="M3.5 7l8.5 6 8.5-6"/>
-      </svg>
-      tuyen.nguyen@tuyen.dpdns.org
-    </a>
-
-    <section class="redirect" id="redirect" aria-label="Automatic redirect">
-      <div class="ring">
-        <svg viewBox="0 0 60 60" aria-hidden="true">
-          <defs>
-            <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#8ff3ee"/>
-              <stop offset="100%" stop-color="#14a6c4"/>
-            </linearGradient>
-          </defs>
-          <circle class="track" cx="30" cy="30" r="26"/>
-          <circle class="bar" id="bar" cx="30" cy="30" r="26"/>
-        </svg>
-        <div class="num" id="num">30</div>
-      </div>
-
-      <div class="info">
-        <strong id="title">Redirecting to Facebook</strong>
-        <span id="sub">Automatically in 30 seconds</span>
-      </div>
-
-      <div class="actions">
-        <a class="btn primary" id="go" href="https://www.facebook.com/tuyen.nguyen.fb.vn">Go now</a>
-        <button class="btn" id="stay" type="button">Stay here</button>
-      </div>
-    </section>
-  </main>
+<div id="app" class="hide">
+ <aside>
+  <div class="brand grad">Personal Vault</div>
+  <nav class="nav" id="nav" aria-label="Main">
+   <button data-p="home" aria-current="page">Home</button>
+   <button data-p="movies">Watch Movies</button>
+   <button data-p="data">Personal Data</button>
+   <button data-p="docs">Documents</button>
+   <button data-p="soft">Softwares</button>
+  </nav>
+  <button class="out" id="lo">Sign out</button>
+ </aside>
+ <main id="mn"></main>
+</div>
 
 <script>
-  // ====== Settings ======
-  var FACEBOOK_URL = "https://www.facebook.com/tuyen.nguyen.fb.vn";
-  var REDIRECT_SECONDS = 30;   // change this number to use a different delay
+(function(){
+ var USERS={"tuyen.nguyen@tuyen.dpdns.org":"Tuyen Nguyen","tuyen@tuyen.dpdns.org":"Tuyen","nntuyenvn@tuyen.dpdns.org":"NN Tuyen VN"};
+ var DEFAULT="tuyenn", cur=null;
+ var $=function(i){return document.getElementById(i)};
+ (function(){var n=0;document.querySelectorAll('#ttl .ln').forEach(function(l){var t=l.textContent,g=l.dataset.c==='g';l.textContent='';l.setAttribute('aria-hidden','true');t.split('').forEach(function(c,k){var s=document.createElement('i');s.className='ch';s.textContent=c;s.style.setProperty('--i',n++);var f=g?k/(t.length-1):0;s.style.color=g?'rgb('+Math.round(155-136*f)+','+Math.round(250-91*f)+','+Math.round(241-45*f)+')':'#fff';l.appendChild(s)})})})();
+ function sget(k){try{return localStorage.getItem(k)}catch(e){return null}}
+ function sset(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+ async function hash(s){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("vault:"+s));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")}
+ async function stored(e){return sget("pw:"+e)||await hash(DEFAULT)}
 
-  // ====== Name: split into letters so each one can jump ======
-  var stops = [[143, 243, 238], [63, 214, 198], [20, 166, 196]];   // aqua -> teal -> cyan
-  function gradientAt(t) {
-    var seg = t < 0.5 ? 0 : 1;
-    var k = (t - seg * 0.5) / 0.5;
-    var a = stops[seg], b = stops[seg + 1];
-    return "rgb(" + a.map(function (v, i) { return Math.round(v + (b[i] - v) * k); }).join(",") + ")";
-  }
+ document.addEventListener("click",function(ev){
+  var t=ev.target.closest(".toggle"); if(!t)return;
+  var i=$(t.dataset.t),s=i.type==="password"; i.type=s?"text":"password"; t.textContent=s?"Hide":"Show";
+  t.setAttribute("aria-label",s?"Hide password":"Show password");
+ });
 
-  var index = 0;
-  document.querySelectorAll("#name .line").forEach(function (line) {
-    var text = line.getAttribute("data-text");
-    var useGradient = line.getAttribute("data-gradient") === "true";
-    for (var n = 0; n < text.length; n++) {
-      var s = document.createElement("span");
-      s.className = "ch";
-      s.style.setProperty("--i", index++);
-      if (text[n] === " ") {
-        s.className += " sp";
-      } else {
-        s.textContent = text[n];
-        if (useGradient) s.style.setProperty("--c", gradientAt(n / (text.length - 1)));
-      }
-      line.appendChild(s);
-    }
+ var WL_TO="tuyen.nguyen@tuyen.dpdns.org",WL_ENDPOINT="";
+ $("jw").onclick=function(){$("lf").classList.add("hide");$("wl").classList.remove("hide");$("wnm").focus()};
+ $("wb").onclick=function(){$("wl").classList.add("hide");$("lf").classList.remove("hide");$("wf").classList.remove("hide");$("wr").classList.add("hide");$("wem").value="";$("wnm").value=""};
+ $("wl").addEventListener("submit",async function(e){
+  e.preventDefault();var v=$("wem").value.trim(),nv=$("wnm").value.trim(),m=$("wm"),lk=$("wmail");m.textContent="";$("wem").classList.remove("bad");$("wnm").classList.remove("bad");
+  if(nv.length<2){$("wnm").classList.add("bad");$("wnm").focus();m.textContent="Please enter your full name.";return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){$("wem").classList.add("bad");$("wem").focus();m.textContent="Please enter a valid email address.";return}
+  lk.href="mailto:"+WL_TO+"?subject="+encodeURIComponent("Waiting list request")+"&body="+encodeURIComponent("Please add me to the waiting list.\nFull name: "+nv+"\nEmail: "+v);
+  if(WL_ENDPOINT){try{await fetch(WL_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:nv,email:v,to:WL_TO})});lk.classList.add("hide")}catch(x){}}
+  $("wf").classList.add("hide");$("wr").classList.remove("hide");
+ });
+ $("em").addEventListener("blur",function(){var v=this.value.trim(); if(v&&v.indexOf("@")===-1)this.value=v+"@tuyen.dpdns.org"});
+
+ $("lf").addEventListener("submit",async function(e){
+  e.preventDefault();
+  var m=$("lm"),em=$("em"),email=em.value.trim().toLowerCase();
+  m.textContent=""; em.classList.remove("bad");
+  if(!/@tuyen\.dpdns\.org$/.test(email)){em.classList.add("bad");em.focus();m.textContent="Only @tuyen.dpdns.org email addresses are accepted.";return}
+  if(!USERS[email]||(await hash($("pw").value))!==(await stored(email))){m.textContent="Incorrect email or password.";return}
+  $("lb").disabled=true; $("wt").classList.remove("hide");
+  requestAnimationFrame(function(){requestAnimationFrame(function(){$("br").classList.add("run")})});
+  setTimeout(function(){enter(email)},5000);
+ });
+
+ function enter(email){
+  cur=email; $("login").classList.add("hide"); $("app").classList.remove("hide");
+  document.title="Personal Vault"; go("home");
+ }
+ $("lo").onclick=function(){
+  cur=null;$("app").classList.add("hide");$("login").classList.remove("hide");
+  $("lb").disabled=false;$("wt").classList.add("hide");$("br").classList.remove("run");$("pw").value="";
+ };
+ $("nav").addEventListener("click",function(e){var b=e.target.closest("button");if(b)go(b.dataset.p)});
+
+ function tiles(a){return '<div class="grid">'+a.map(function(x){return '<div class="tile"><h3>'+x[0]+'</h3><p>'+x[1]+'</p></div>'}).join("")+'</div>'}
+ var P={
+  home:function(){return '<h2>Welcome back, <span class="grad">'+USERS[cur].split(" ")[0]+'</span></h2><p class="lead">Everything you keep here, in one private place.</p>'+tiles([["Documents","Files, notes and records you want to keep safe."],["Personal Data","Your profile and password settings."],["Watch Movies","Your personal watch list."],["Softwares","Installers and tools you rely on."]])},
+  movies:function(){return '<h2>Watch Movies</h2><p class="lead">Your personal watch list.</p><div class="empty">No movies added yet.</div>'},
+  docs:function(){return '<h2>Documents</h2><p class="lead">Your stored documents.</p><div class="empty">No documents uploaded yet.</div>'},
+  soft:function(){return '<h2>Softwares</h2><p class="lead">Tools and installers.</p><div class="empty">No software listed yet.</div>'},
+  data:function(){return '<h2>Personal Data</h2><p class="lead">Your profile and account security.</p><div class="cols">'+
+   '<div class="card"><h3>Profile</h3><div class="row"><b>Name</b><span>'+USERS[cur]+'</span></div><div class="row"><b>Email</b><span>'+cur+'</span></div><div class="row"><b>Password</b><span>'+(sget("pw:"+cur)?"Custom password set":"Default password")+'</span></div></div>'+
+   '<form class="card" id="cf" novalidate><h3>Change password</h3>'+
+   '<label for="o">Current password</label><div class="field"><input id="o" type="password" autocomplete="current-password" style="padding-left:18px"></div>'+
+   '<label for="n">New password</label><div class="field"><input id="n" type="password" autocomplete="new-password" style="padding-left:18px"></div>'+
+   '<label for="c">Confirm new password</label><div class="field"><input id="c" type="password" autocomplete="new-password" style="padding-left:18px"></div>'+
+   '<div class="msg" id="cm" role="alert" aria-live="polite"></div><button class="btn" type="submit">Update password</button></form></div>'}
+ };
+ function go(p){
+  document.querySelectorAll("#nav button").forEach(function(b){b.toggleAttribute("aria-current",b.dataset.p===p);if(b.dataset.p===p)b.setAttribute("aria-current","page")});
+  $("mn").innerHTML=P[p](); window.scrollTo(0,0);
+  if(p==="data")$("cf").addEventListener("submit",async function(e){
+   e.preventDefault();var m=$("cm");m.className="msg";
+   var o=$("o").value,n=$("n").value,c=$("c").value;
+   if((await hash(o))!==(await stored(cur))){m.textContent="Current password is incorrect.";return}
+   if(n.length<6){m.textContent="New password must be at least 6 characters.";return}
+   if(n!==c){m.textContent="New passwords do not match.";return}
+   if(n===o){m.textContent="Choose a password different from the current one.";return}
+   sset("pw:"+cur,await hash(n));
+   m.className="msg good";m.textContent="Password updated. Use it the next time you sign in.";
+   ["o","n","c"].forEach(function(i){$(i).value=""});
   });
-
-  // ====== Countdown and redirect ======
-  var bar = document.getElementById("bar");
-  var num = document.getElementById("num");
-  var sub = document.getElementById("sub");
-  var title = document.getElementById("title");
-  var box = document.getElementById("redirect");
-  var stay = document.getElementById("stay");
-
-  var R = 26;
-  var C = 2 * Math.PI * R;
-  bar.style.strokeDasharray = C;
-  bar.style.strokeDashoffset = 0;
-
-  var total = REDIRECT_SECONDS * 1000;
-  var endAt = Date.now() + total;
-  var timer = setInterval(tick, 100);
-  num.textContent = REDIRECT_SECONDS;
-  sub.textContent = "Automatically in " + REDIRECT_SECONDS + " seconds";
-
-  function tick() {
-    var left = Math.max(0, endAt - Date.now());   // real clock, stays accurate even if the tab is hidden
-    var seconds = Math.ceil(left / 1000);
-    bar.style.strokeDashoffset = C * (1 - left / total);
-    num.textContent = seconds;
-    sub.textContent = seconds + (seconds === 1 ? " second left" : " seconds left");
-    if (left <= 0) {
-      clearInterval(timer);
-      window.location.href = FACEBOOK_URL;
-    }
-  }
-
-  // "Stay here" stops the countdown; "Go now" still works
-  stay.addEventListener("click", function () {
-    clearInterval(timer);
-    box.classList.add("stopped");
-    title.textContent = "Redirect stopped";
-    sub.textContent = "Press Go now whenever you want to visit Facebook";
-    stay.style.display = "none";
-  });
+ }
+})();
 </script>
 </body>
 </html>
